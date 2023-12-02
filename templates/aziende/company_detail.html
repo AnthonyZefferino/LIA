@@ -1,0 +1,270 @@
+{% extends 'partials/base.html' %}
+{% load i18n %}
+{% load static %}
+{% block contents %}
+    <div class="row">
+        <div class="col-xl-3">
+            <div class="card">
+                <div class="card-body border-bottom pb-4">
+                    <div class="vstack gap-4">
+                        <div class="d-flex">
+                            <div class="ms-2 flex-grow-1">
+                                <h5 class="mb-1 fw-semibold"> {% trans 'company representative' %}
+                                </h5>
+                            </div>
+                            <div class="dropdown pull-right">
+                                <button class="btn  btn-outline-pink" type="button" id="company_representative"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="company_representative">
+                                    <li><a class="dropdown-item"
+                                    ><i
+                                            class="mdi text-primary mdi-plus-one"></i> {% trans 'Add' %} {% trans 'company representative' %}
+                                    </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% for representative in representatives.all %}
+                    {% include 'aziende/details_representative_info.html' %}
+                {% endfor %}
+            </div>
+
+            <div class="card">
+                <div class="card-body border-bottom pb-4 bg-success-subtle">
+                    <div class="vstack gap-4">
+                        <div class="d-flex">
+                            <div class="ms-2 flex-grow-1">
+                                <h5 class="mb-1 fw-semibold"> {% trans 'Offices' %}
+                                </h5>
+                            </div>
+                            <div class="dropdown pull-right">
+                                <button class="btn  btn-outline-pink" type="button" id="button_offices"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="company_representative">
+                                    <li><a class="dropdown-item"
+                                    ><i
+                                            class="mdi text-primary mdi-plus-one"></i> {% trans 'Add' %} {% trans 'office' %}
+                                    </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% for office in offices.all %}
+                {% include 'aziende/details_office_info.html' %}
+            {% endfor %}
+            </div>
+        </div><!--end col-->
+        <div class="col-xl-9">
+            {% include 'aziende/details_company_info.html' %}
+
+            <hr>
+            <div class="row">
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">Last Activities</h4>
+                            <div data-simplebar style="max-height: 376px;">
+                                <ul class="verti-timeline list-unstyled">
+                                    <li class="event-list active">
+                                        <div class="event-timeline-dot">
+                                            <i class="bx bx-right-arrow-circle font-size-18"></i>
+                                        </div>
+                                        <div class="d-flex">
+                                            <div class="flex-shrink-0 me-3">
+                                                <img src="{% static 'images/users/avatar-5.jpg' %}" alt=""
+                                                     class="avatar-xs rounded-circle">
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <div>
+                                                    <b>Charles Brown</b> applied for the job <b>Sr.frontend
+                                                    Developer</b>
+                                                    <p class="mb-0 text-muted">3 min ago</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="event-list">
+                                        <div class="event-timeline-dot">
+                                            <i class="bx bx-right-arrow-circle font-size-18"></i>
+                                        </div>
+                                        <div class="d-flex">
+                                            <div class="flex-shrink-0 me-3">
+                                                <div class="avatar-xs">
+                                                    <div class="avatar-title bg-primary-subtle text-primary rounded-circle">
+                                                        <i class='bx bx-revision font-size-14'></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <div>
+                                                    Your subscription expires today <a href="javascript: void(0);">Renew
+                                                    Now</a>
+                                                    <p class="text-muted mb-0">53 min ago</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="event-list active">
+                                        <div class="event-timeline-dot">
+                                            <i class="bx bx-right-arrow-circle font-size-18"></i>
+                                        </div>
+                                        <div class="d-flex">
+                                            <div class="flex-shrink-0 me-3">
+                                                <div class="avatar-xs">
+                                                    <div class="avatar-title bg-primary-subtle text-primary rounded-circle">
+                                                        JA
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <div>
+                                                    <b>Jennifer Alexandar</b> created a new account as a
+                                                    <b>Freelance</b>.
+                                                    <p class="text-muted mb-0">1 hrs ago</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="event-list">
+                                        <div class="event-timeline-dot">
+                                            <i class="bx bx-right-arrow-circle font-size-18"></i>
+                                        </div>
+                                        <div class="d-flex">
+                                            <div class="flex-shrink-0 me-3">
+                                                <img src="{% static 'images/users/avatar-2.jpg' %}" alt=""
+                                                     class="avatar-xs rounded-circle">
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <div>
+                                                    <b>Mark Ellison</b> applied for the job <b>Project Manager</b>
+                                                    <p class="mb-0 text-muted">3 hrs ago</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="event-list">
+                                        <div class="event-timeline-dot">
+                                            <i class="bx bx-right-arrow-circle font-size-18"></i>
+                                        </div>
+                                        <div class="d-flex">
+                                            <div class="flex-shrink-0 me-3">
+                                                <div class="avatar-xs">
+                                                    <div class="avatar-title bg-primary-subtle text-primary rounded-circle">
+                                                        AZ
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <div>
+                                                    <b>Acolin Zelton</b> created a new account as a <b>Freelance</b>.
+                                                    <p class="text-muted mb-0">1 hrs ago</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="text-center mt-4"><a href="javascript: void(0);"
+                                                                 class="btn btn-primary waves-effect waves-light btn-sm">View
+                                    More <i class="mdi mdi-arrow-right ms-1"></i></a></div>
+                            </div>
+                        </div>
+                    </div><!--end card-->
+                </div><!--end col-->
+
+                <div class="col-6">
+                    <div class="alert alert-success">
+                        <h5>Vacancies sempre aperte</h5>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="card jobs-categories">
+                                <div class="card-body">
+                                    <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block mb-2">Accounting
+                                        &
+                                        Finance
+                                        <span class="badge text-bg-info float-end bg-opacity-100">52</span></a>
+                                    <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block mb-2">Development
+                                        <span
+                                                class="badge text-bg-info float-end bg-opacity-100">10</span></a>
+                                    <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block mb-2">Customer
+                                        Service
+                                        <span class="badge text-bg-info float-end bg-opacity-100">64</span></a>
+                                    <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block mb-2">Marketing
+                                        <span
+                                                class="badge text-bg-info float-end bg-opacity-100">105</span></a>
+                                    <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block mb-2">Human
+                                        Resource
+                                        <span
+                                                class="badge text-bg-info float-end bg-opacity-100">142</span></a>
+                                    <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block mb-2">Health
+                                        and
+                                        Care
+                                        <span
+                                                class="badge text-bg-info float-end bg-opacity-100">01</span></a>
+                                    <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block mb-2">Project
+                                        Management<span
+                                                class="badge text-bg-info float-end bg-opacity-100">254</span></a>
+                                    <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block">Automotive
+                                        Jobs
+                                        <span
+                                                class="badge text-bg-info float-end bg-opacity-100">79</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card jobs-categories">
+                                <div class="card-body">
+                                    <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block mb-2">Accounting
+                                        &
+                                        Finance
+                                        <span class="badge text-bg-info float-end bg-opacity-100">52</span></a>
+                                    <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block mb-2">Development
+                                        <span
+                                                class="badge text-bg-info float-end bg-opacity-100">10</span></a>
+                                    <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block mb-2">Customer
+                                        Service
+                                        <span class="badge text-bg-info float-end bg-opacity-100">64</span></a>
+                                    <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block mb-2">Marketing
+                                        <span
+                                                class="badge text-bg-info float-end bg-opacity-100">105</span></a>
+                                    <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block mb-2">Human
+                                        Resource
+                                        <span
+                                                class="badge text-bg-info float-end bg-opacity-100">142</span></a>
+                                    <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block mb-2">Health
+                                        and
+                                        Care
+                                        <span
+                                                class="badge text-bg-info float-end bg-opacity-100">01</span></a>
+                                    <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block mb-2">Project
+                                        Management<span
+                                                class="badge text-bg-info float-end bg-opacity-100">254</span></a>
+                                    <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block">Automotive
+                                        Jobs
+                                        <span
+                                                class="badge text-bg-info float-end bg-opacity-100">79</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!--end col-->
+    </div><!--end row-->
+
+{% endblock %}
+
+{% block extra_javascript %}
+    {##}
+    {#   <script src="{% static 'libs/owl.carousel/dist/owl.carousel.min.js' %}"></script>#}
+
+{% endblock %}

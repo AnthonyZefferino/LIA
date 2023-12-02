@@ -1,0 +1,109 @@
+{% extends 'partials/base.html' %}
+{% load i18n %}
+{% load static %}
+{% block extra_css %}
+    <link href="{% static 'libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css' %}" rel="stylesheet"
+          type="text/css">
+    <!-- DataTables -->
+    <link href="{% static 'libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css' %}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static 'libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css' %}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static '/custom_js_css/datatable.net-searchbuilding/searchBuilder.dataTables.min.css' %}"
+          rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static '/custom_js_css/datatable.net-searchbuilding/dataTables.dateTime.min.css' %}" rel="stylesheet"
+          type="text/css"/>
+
+
+{% endblock %}
+{% block contents %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body border-bottom">
+                    <div class="d-flex align-items-center">
+                        <h5 class="mb-0 card-title flex-grow-1">{% trans 'Company' %}</h5>
+                        <div class="flex-shrink-0">
+                            <a href="#!" class="btn btn-primary">Add New {% trans 'Company' %}</a>
+                            <a href="#!" class="btn btn-light"><i class="mdi mdi-refresh"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <table class="table align-middle  w-100 table-check table-hover table-condensed table-striped" id="company-table"
+                           data-detail-url="{% url 'aziende:company-detail' pk=0 %}"
+                           data-edit-url="{% url 'aziende:company-edit' pk=0 %}">
+                        <thead>
+                        <tr>
+                            <th>{% trans 'Name' %}</th>
+                            <th>{% trans 'macro_switch' %}</th>
+                            <th>{% trans 'industry' %}</th>
+                            <th>{% trans 'sector' %}</th>
+                            <th>{% trans 'email' %}</th>
+                            <th>{% trans 'phone_mobile' %}</th>
+                            <th>{% trans 'phone_number' %}</th>
+                            <th>{% trans 'address' %}</th>
+                            <th>{% trans 'website' %}</th>
+                            <th>{% trans 'description' %}</th>
+                            <!--  Altri campi -->
+                            <th>{% trans 'Actions' %}</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_content %}
+    <!-- Modal -->
+    <div class="modal fade" id="CompanyDelete" tabindex="-1" aria-labelledby="jobDeleteLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="alert alert-warning text-center bg-warning-subtle">
+                        Cancellazione <strong id="company-to-delete-name"></strong>
+                    </h4>
+                </div>
+                <div class="modal-body px-4 py-5 text-center">
+                    <button type="button" class="btn-close position-absolute end-0 top-0 m-3" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    <div class="avatar-sm mb-4 mx-auto">
+                        <div class="avatar-title bg-primary text-primary bg-opacity-10 font-size-20 rounded-3">
+                            <i class="mdi mdi-trash-can-outline"></i>
+                        </div>
+                    </div>
+                    <p class="text-muted font-size-16 mb-4">{% trans 'Are you sure you want to permanently erase the Company?' %}
+                    </p>
+
+                    <div class="hstack gap-2 justify-content-center mb-0">
+                        <button type="button" class="btn btn-danger">{% trans 'Delete Now' %}</button>
+                        <button type="button" class="btn btn-secondary"
+                                data-bs-dismiss="modal">{% trans 'Close' %}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block extra_javascript %}
+    <script src="{% static 'libs/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+    <!-- Buttons examples -->
+    <script src="{% static 'libs/datatables.net-buttons/js/dataTables.buttons.min.js' %}"></script>
+    <script src="{% static 'libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'libs/jszip/dist/jszip.min.js' %}"></script>
+    <script src="{% static 'libs/pdfmake/build/pdfmake.min.js' %}"></script>
+    <script src="{% static 'libs/pdfmake/build/vfs_fonts.js' %}"></script>
+    <script src="{% static 'libs/datatables.net-buttons/js/buttons.html5.min.js' %}"></script>
+    <script src="{% static 'libs/datatables.net-buttons/js/buttons.print.min.js' %}"></script>
+    <script src="{% static 'libs/datatables.net-buttons/js/buttons.colVis.min.js' %}"></script>
+    <script src="{% static '/custom_js_css/datatable.net-searchbuilding/dataTables.searchBuilder.min.js' %}"></script>
+    <script src="{% static '/custom_js_css/datatable.net-searchbuilding/dataTables.dateTime.min.js' %}"></script>
+    <script src="{% static 'js/aziende/company-list.init.js' %}"></script>
+{% endblock %}
+
+

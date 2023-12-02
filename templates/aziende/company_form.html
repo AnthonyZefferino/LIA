@@ -1,0 +1,25 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block contents %}
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Company</h4>
+                    <h2>{% if object %}Edit{% else %}Create{% endif %} Company</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        {{ form.industry|as_crispy_field }}
+                        {{ form.sector|as_crispy_field }}
+                        <button type="submit" class="btn btn-primary">{% if object %}Update{% else %}
+                            Create{% endif %}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block extra_javascript %}
+{% endblock %}

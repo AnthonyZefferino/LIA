@@ -1,0 +1,28 @@
+ python manage.py createsuperuser
+ Username: admin
+ Password:.1Bellissima1.
+
+ *************************
+Client ID
+978433510480-qf3eali5qifaurkbb788stas23d5fhkl.apps.googleusercontent.com
+Client secret
+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
+/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
+python manage.py startapp skote
+
+python manage.py makemigrations --dry-run aziende job_candidates utils vacancies
+python manage.py makemigrations
+python manage.py migrate
+python manage.py makemigrations aziende
+
+
+/////////////////////////////////////////////////////////////////
+python manage.py collectstatic
+python manage.py runserver
+
+///////////////////////////////////////////////////////////////
+///////////// LANGUAGE ////////////////////////////////////////
+python manage.py makemessages -l it --ignore=venv/*
+python manage.py compilemessages

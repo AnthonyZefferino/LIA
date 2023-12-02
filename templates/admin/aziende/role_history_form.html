@@ -1,0 +1,41 @@
+{% extends 'admin/change_form.html' %}
+
+
+
+{% block content %}
+    <div class="col-12">
+        <hr>
+    </div>
+    <div class="col-6">
+        <form method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <div class="col-12">
+                <hr>
+            </div>
+            <button class="btn btn-success" type="submit">SALVA</button>
+        </form>
+    </div>
+    <div class="col-6">
+        <h2 class="text-success">Role History Esistenti</h2>
+        <ul class="list-group">
+            {% for role_history in rolehistories %}
+                <li class="list-group-item">{{ role_history.role }} - da {{ role_history.date_from }}
+                    a {{ role_history.date_to }}</li>
+            {% empty %}
+                <li>Nessun ruolo trovato.</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
+
+{% block extrajs %}
+    {{ block.super }}
+
+    <script type="text/javascript">
+        {#window.onload = function () {#}
+        {#    alert(11111)#}
+        {#    $('input[name="date_from"]').daterangepicker();#}
+        {#    $('input[name="date_to"]').daterangepicker();#}
+
+    </script>
+{% endblock %}

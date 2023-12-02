@@ -1,0 +1,15 @@
+{% if industry %}
+    <h2>Companies in the Industry: {{ industry.name }}</h2>
+{% else %}
+    <h2>No Industry selected or it does not exist</h2>
+{% endif %}
+
+{% if companies %}
+    <ul>
+    {% for company in companies %}
+        <li>{{ company.name }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No companies found for this industry.</p>
+{% endif %}
