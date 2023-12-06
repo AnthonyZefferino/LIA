@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("aziende/", include("aziende.urls")),
     path('vacancies/', include('vacancies.urls')),
+    path('job_candidates/', include('job_candidates.urls')),
     # Dashboards View
     path('', views.DashboardView.as_view(), name='dashboard'),
     path('dashboard_saas', views.SaasView.as_view(), name='dashboard_saas'),
@@ -77,6 +78,6 @@ if settings.DEBUG:
     import debug_toolbar
 
     urlpatterns = [
-        path('__debug__/', include(debug_toolbar.urls)),
-        # ... altre configurazioni delle URL ...
-    ] + urlpatterns
+                      path('__debug__/', include(debug_toolbar.urls)),
+                      # ... altre configurazioni delle URL ...
+                  ] + urlpatterns

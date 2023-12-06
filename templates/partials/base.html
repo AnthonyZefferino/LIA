@@ -22,13 +22,14 @@
         <link href="{% static 'css/icons.min.css' %}" rel="stylesheet" type="text/css"/>
         <!-- App Css-->
         <link href="{% static 'css/app.min.css' %}" id="app-style" rel="stylesheet" type="text/css"/>
+        <link href="{% static 'custom_js_css/lia_custom.css' %}" id="app-style" rel="stylesheet" type="text/css"/>
         <!-- App js -->
         <script src="{% static 'js/plugin.js' %}"></script>
     {% endblock css %}
 </head>
 
 
-<body data-sidebar="dark" data-keep-enlarged="true" class="vertical-collpsed" data-sidebar="colored"
+<body data-keep-enlarged="true" class="vertical-collpsed" data-sidebar="colored"
       data-layout-scrollable="true">
 <!-- Loader -->
 <div id="preloader">
@@ -102,7 +103,7 @@
 {% endblock %}
 
 {% block r_sidebar %}
-{#    {% include 'partials/rightsidebar.html' %}#}
+    {#    {% include 'partials/rightsidebar.html' %}#}
 {% endblock %}
 
 {% block javascript %}

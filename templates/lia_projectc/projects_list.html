@@ -18,15 +18,15 @@
 
 {% endblock %}
 {% block contents %}
-    <input type="hidden" id="input_industry" value="{{ industry }}">
+    <input type="hidden" id="input_company" value="{{ company }}">
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body border-bottom">
                     <div class="d-flex align-items-center">
-                        <h5 class="mb-0 card-title flex-grow-1">{% trans 'Company' %}</h5>
+                        <h5 class="mb-0 card-title flex-grow-1">{% trans 'Project' %}</h5>
                         <div class="flex-shrink-0">
-                            <a href="#!" class="btn btn-primary">Add New {% trans 'Company' %}</a>
+                            <a href="#!" class="btn btn-primary">Add New {% trans 'Project' %}</a>
                             <a href="#!" class="btn btn-light"><i class="mdi mdi-refresh"></i></a>
                         </div>
                     </div>
@@ -39,16 +39,11 @@
                            data-edit-url="{% url 'aziende:company-edit' pk=0 %}">
                         <thead>
                         <tr>
-                            <th>{% trans 'Name' %}</th>
-                            <th>{% trans 'macro_switch' %}</th>
-                            <th>{% trans 'industry' %}</th>
-                            <th>{% trans 'sector' %}</th>
-                            <th>{% trans 'email' %}</th>
-                            <th>{% trans 'phone_mobile' %}</th>
-                            <th>{% trans 'phone_number' %}</th>
-                            <th>{% trans 'address' %}</th>
-                            <th>{% trans 'website' %}</th>
-                            <th>{% trans 'description' %}</th>
+                            <th>{% trans "Project Title" %}</th>
+                            <th>{% trans 'Supporting Entity' %}</th>
+                            <th>{% trans "Project Type" %}</th>
+                            <th>{% trans "Description" %}</th>
+                            <th>{% trans "Lead Partner" %}</th>
                             <!--  Altri campi -->
                             <th>{% trans 'Actions' %}</th>
                         </tr>
@@ -105,7 +100,7 @@
     <script src="{% static 'libs/datatables.net-buttons/js/buttons.colVis.min.js' %}"></script>
     <script src="{% static '/custom_js_css/datatable.net-searchbuilding/dataTables.searchBuilder.min.js' %}"></script>
     <script src="{% static '/custom_js_css/datatable.net-searchbuilding/dataTables.dateTime.min.js' %}"></script>
-    <script src="{% static 'js/aziende/company-list.init.js' %}"></script>
+    <script src="{% static 'js/lia_projects/project-list.init.js' %}"></script>
 {% endblock %}
 
 

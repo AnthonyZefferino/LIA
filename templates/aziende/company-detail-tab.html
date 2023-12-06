@@ -1,0 +1,733 @@
+{% load i18n %}
+{% load static %}
+<div class="card">
+    <div class="card-body">
+        <ul class="nav nav-pills nav-justified" role="tablist">
+            <li class="nav-item waves-effect waves-light">
+                <a class="nav-link active" data-bs-toggle="tab" href="#tab_Last_Activities" role="tab">
+                    <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
+                    <span class="d-none d-sm-block">Last Activities</span>
+                </a>
+            </li>
+            <li class="nav-item waves-effect waves-light">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab_Vacancies_Aperte" role="tab">
+                    <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                    <span class="d-none d-sm-block">Vacancies Aperte</span>
+                </a>
+            </li>
+            <li class="nav-item waves-effect waves-light">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab_Vacancies_Sempre_Aperte" role="tab">
+                    <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
+                    <span class="d-none d-sm-block">Vacancies Sempre Aperte</span>
+                </a>
+            </li>
+            <li class="nav-item waves-effect waves-light">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab_files" role="tab">
+                    <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
+                    <span class="d-none d-sm-block">Files</span>
+                </a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content p-3 text-muted">
+            <div class="tab-pane" id="tab_files" role="tabpanel">
+                <div class="table-responsive">
+                                                        <table class="table align-middle table-nowrap table-hover mb-0">
+                                                            <thead>
+                                                                <tr>
+                                                                  <th scope="col">Name</th>
+                                                                  <th scope="col">Date modified</th>
+                                                                  <th scope="col" colspan="2">Size</th>
+                                                                </tr>
+                                                              </thead>
+                                                            <tbody> 
+                                                                <tr>
+                                                                    <td><a href="javascript: void(0);" class="text-dark fw-medium"><i class="mdi mdi-folder-zip font-size-16 align-middle text-warning me-2"></i> Project-A.zip</a></td>
+                                                                    <td>11-10-2020, 17:05</td>
+                                                                    <td>115 KB</td>
+                                                                    <td>
+                                                                        <div class="dropdown">
+                                                                            <a class="font-size-16 text-muted" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
+                                                                                <i class="mdi mdi-dots-horizontal"></i>
+                                                                            </a>
+
+                                                                            <div class="dropdown-menu dropdown-menu-end">
+                                                                                <a class="dropdown-item" href="#">Open</a>
+                                                                                
+                                                                                <a class="dropdown-item" href="#">Rename</a>
+                                                                                <div class="dropdown-divider"></div>
+                                                                                <a class="dropdown-item" href="#">Remove</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><a href="javascript: void(0);" class="text-dark fw-medium"><i class="mdi mdi-image font-size-16 align-middle text-muted me-2"></i> Img-1.jpeg</a></td>
+                                                                    <td>11-10-2020, 13:26</td>
+                                                                    <td>86 KB</td>
+                                                                    <td>
+                                                                        <div class="dropdown">
+                                                                            <a class="font-size-16 text-muted" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
+                                                                                <i class="mdi mdi-dots-horizontal"></i>
+                                                                            </a>
+
+                                                                            <div class="dropdown-menu dropdown-menu-end">
+                                                                                <a class="dropdown-item" href="#">Open</a>
+                                                                                
+                                                                                <a class="dropdown-item" href="#">Rename</a>
+                                                                                <div class="dropdown-divider"></div>
+                                                                                <a class="dropdown-item" href="#">Remove</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><a href="javascript: void(0);" class="text-dark fw-medium"><i class="mdi mdi-text-box font-size-16 align-middle text-muted me-2"></i> update list.txt</a></td>
+                                                                    <td>10-10-2020, 11:32</td>
+                                                                    <td>08 KB</td>
+                                                                    <td>
+                                                                        <div class="dropdown">
+                                                                            <a class="font-size-16 text-muted" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
+                                                                                <i class="mdi mdi-dots-horizontal"></i>
+                                                                            </a>
+
+                                                                            <div class="dropdown-menu dropdown-menu-end">
+                                                                                <a class="dropdown-item" href="#">Open</a>
+                                                                                
+                                                                                <a class="dropdown-item" href="#">Rename</a>
+                                                                                <div class="dropdown-divider"></div>
+                                                                                <a class="dropdown-item" href="#">Remove</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><a href="javascript: void(0);" class="text-dark fw-medium"><i class="mdi mdi-folder font-size-16 align-middle text-warning me-2"></i> Project B</a></td>
+                                                                    <td>10-10-2020, 10:51</td>
+                                                                    <td>72 KB</td>
+                                                                    <td>
+                                                                        <div class="dropdown">
+                                                                            <a class="font-size-16 text-muted" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
+                                                                                <i class="mdi mdi-dots-horizontal"></i>
+                                                                            </a>
+
+                                                                            <div class="dropdown-menu dropdown-menu-end">
+                                                                                <a class="dropdown-item" href="#">Open</a>
+                                                                                
+                                                                                <a class="dropdown-item" href="#">Rename</a>
+                                                                                <div class="dropdown-divider"></div>
+                                                                                <a class="dropdown-item" href="#">Remove</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><a href="javascript: void(0);" class="text-dark fw-medium"><i class="mdi mdi-text-box font-size-16 align-middle text-muted me-2"></i> Changes list.txt</a></td>
+                                                                    <td>09-10-2020, 17:05</td>
+                                                                    <td>07 KB</td>
+                                                                    <td>
+                                                                        <div class="dropdown">
+                                                                            <a class="font-size-16 text-muted" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
+                                                                                <i class="mdi mdi-dots-horizontal"></i>
+                                                                            </a>
+
+                                                                            <div class="dropdown-menu dropdown-menu-end">
+                                                                                <a class="dropdown-item" href="#">Open</a>
+                                                                                
+                                                                                <a class="dropdown-item" href="#">Rename</a>
+                                                                                <div class="dropdown-divider"></div>
+                                                                                <a class="dropdown-item" href="#">Remove</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><a href="javascript: void(0);" class="text-dark fw-medium"><i class="mdi mdi-image font-size-16 align-middle text-success me-2"></i> Img-2.png</a></td>
+                                                                    <td>09-10-2020, 15:12</td>
+                                                                    <td>31 KB</td>
+                                                                    <td>
+                                                                        <div class="dropdown">
+                                                                            <a class="font-size-16 text-muted" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
+                                                                                <i class="mdi mdi-dots-horizontal"></i>
+                                                                            </a>
+
+                                                                            <div class="dropdown-menu dropdown-menu-end">
+                                                                                <a class="dropdown-item" href="#">Open</a>
+                                                                                
+                                                                                <a class="dropdown-item" href="#">Rename</a>
+                                                                                <div class="dropdown-divider"></div>
+                                                                                <a class="dropdown-item" href="#">Remove</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><a href="javascript: void(0);" class="text-dark fw-medium"><i class="mdi mdi-folder font-size-16 align-middle text-warning me-2"></i> Project C</a></td>
+                                                                    <td>09-10-2020, 10:11</td>
+                                                                    <td>20 KB</td>
+                                                                    <td>
+                                                                        <div class="dropdown">
+                                                                            <a class="font-size-16 text-muted" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
+                                                                                <i class="mdi mdi-dots-horizontal"></i>
+                                                                            </a>
+
+                                                                            <div class="dropdown-menu dropdown-menu-end">
+                                                                                <a class="dropdown-item" href="#">Open</a>
+                                                                                
+                                                                                <a class="dropdown-item" href="#">Rename</a>
+                                                                                <div class="dropdown-divider"></div>
+                                                                                <a class="dropdown-item" href="#">Remove</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><a href="javascript: void(0);" class="text-dark fw-medium"><i class="bx bxs-file font-size-16 align-middle text-primary me-2"></i> starter-page.html</a></td>
+                                                                    <td>08-10-2020, 03:22</td>
+                                                                    <td>11 KB</td>
+                                                                    <td>
+                                                                        <div class="dropdown">
+                                                                            <a class="font-size-16 text-muted" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
+                                                                                <i class="mdi mdi-dots-horizontal"></i>
+                                                                            </a>
+
+                                                                            <div class="dropdown-menu dropdown-menu-end">
+                                                                                <a class="dropdown-item" href="#">Open</a>
+                                                                                
+                                                                                <a class="dropdown-item" href="#">Rename</a>
+                                                                                <div class="dropdown-divider"></div>
+                                                                                <a class="dropdown-item" href="#">Remove</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+            </div>
+            <div class="tab-pane active" id="tab_Last_Activities" role="tabpanel">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title mb-4">Last Activities</h4>
+                        <div data-simplebar style="max-height: 376px;">
+                            <ul class="verti-timeline list-unstyled">
+                                <li class="event-list active">
+                                    <div class="event-timeline-dot">
+                                        <i class="bx bx-right-arrow-circle font-size-18"></i>
+                                    </div>
+                                    <div class="d-flex">
+                                        <div class="flex-shrink-0 me-3">
+                                            <img src="{% static 'images/users/avatar-5.jpg' %}" alt=""
+                                                 class="avatar-xs rounded-circle">
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <div>
+                                                <b>Marcella Favale</b> applied for the job <b>Sr.frontend
+                                                Developer</b>
+                                                <p class="mb-0 text-muted">3 min ago</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="event-list">
+                                    <div class="event-timeline-dot">
+                                        <i class="bx bx-right-arrow-circle font-size-18"></i>
+                                    </div>
+                                    <div class="d-flex">
+                                        <div class="flex-shrink-0 me-3">
+                                            <div class="avatar-xs">
+                                                <div class="avatar-title bg-primary-subtle text-primary rounded-circle">
+                                                    <i class='bx bx-revision font-size-14'></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <div>
+                                                Your subscription expires today <a href="javascript: void(0);">Renew
+                                                Now</a>
+                                                <p class="text-muted mb-0">53 min ago</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="event-list active">
+                                    <div class="event-timeline-dot">
+                                        <i class="bx bx-right-arrow-circle font-size-18"></i>
+                                    </div>
+                                    <div class="d-flex">
+                                        <div class="flex-shrink-0 me-3">
+                                            <div class="avatar-xs">
+                                                <div class="avatar-title bg-primary-subtle text-primary rounded-circle">
+                                                    JA
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <div>
+                                                <b>Serena Miceli</b> created a new account as a
+                                                <b>Freelance</b>.
+                                                <p class="text-muted mb-0">1 hrs ago</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="event-list">
+                                    <div class="event-timeline-dot">
+                                        <i class="bx bx-right-arrow-circle font-size-18"></i>
+                                    </div>
+                                    <div class="d-flex">
+                                        <div class="flex-shrink-0 me-3">
+                                            <img src="{% static 'images/users/avatar-2.jpg' %}" alt=""
+                                                 class="avatar-xs rounded-circle">
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <div>
+                                                <b>Umberto Altea</b> applied for the job <b>Project Manager</b>
+                                                <p class="mb-0 text-muted">3 hrs ago</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="event-list">
+                                    <div class="event-timeline-dot">
+                                        <i class="bx bx-right-arrow-circle font-size-18"></i>
+                                    </div>
+                                    <div class="d-flex">
+                                        <div class="flex-shrink-0 me-3">
+                                            <div class="avatar-xs">
+                                                <div class="avatar-title bg-primary-subtle text-primary rounded-circle">
+                                                    AZ
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <div>
+                                                <b>Acolin Zelton</b> created a new account as a <b>Freelance</b>.
+                                                <p class="text-muted mb-0">1 hrs ago</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="text-center mt-4"><a href="javascript: void(0);"
+                                                             class="btn btn-primary waves-effect waves-light btn-sm">View
+                                More <i class="mdi mdi-arrow-right ms-1"></i></a></div>
+                        </div>
+                    </div>
+                </div><!--end card-->
+            </div>
+            <div class="tab-pane" id="tab_Vacancies_Aperte" role="tabpanel">
+                <div class="row">
+                    <div class="row" id="jobgrid-list">
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-body"><img src="/static/images/companies/adobe.svg" alt="" height="50"
+                                                            class="mb-3">                <h5 class="fs-17 mb-2"><a
+                                        href="javascript:void(0);" class="text-dark">Magento
+                                    Developer</a> <small class="text-muted fw-normal">(0-2 Yrs
+                                    Exp)</small></h5>
+                                    <ul class="list-inline mb-0">
+                                        <li class="list-inline-item"><p class="text-muted fs-14 mb-1">Skote Technology
+                                            Pvt.Ltd</p></li>
+                                        <li class="list-inline-item"><p class="text-muted fs-14 mb-0"><i
+                                                class="mdi mdi-map-marker"></i>California</p></li>
+                                        <li class="list-inline-item"><p class="text-muted fs-14 mb-0"><i
+                                                class="uil uil-wallet"></i>$250 - $800 / month</p></li>
+                                    </ul>
+                                    <div class="row">
+                                        <div class="mt-3 hstack gap-2 col"><span
+                                                class="badge rounded-1 badge-soft-success">Full Time</span><span
+                                                class="badge rounded-1 badge-soft-warning">Urgent</span><span
+                                                class="badge rounded-1 badge-soft-info">Private</span></div>
+                                        <div class="avatar-group col">
+                                            <div class="avatar-group-item"><a href="#" class="d-inline-block"> <img
+                                                    src="/static/images/users/avatar-4.jpg" alt=""
+                                                    class="rounded-circle avatar-xs"> </a></div>
+                                            <div class="avatar-group-item"><a href="#" class="d-inline-block"> <img
+                                                    src="/static/images/users/avatar-1.jpg" alt=""
+                                                    class="rounded-circle avatar-xs"> </a></div>
+                                            <div class="avatar-group-item"><a href="#" class="d-inline-block"> <img
+                                                    src="/static/images/users/avatar-6.jpg" alt=""
+                                                    class="rounded-circle avatar-xs"> </a></div>
+                                            <div classname="avatar-group-item"><a href="#" classname="d-inline-block">
+                                                <span class="avatar-title rounded-circle bg-danger text-white font-size-16 ps-2 pe-2">                                                                     3+                                                                 </span>
+                                            </a></div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 hstack gap-2"><a href="/vacancies/detail/1" target="_blank"
+                                                                      class="btn btn-soft-success w-100">Details</a> <a
+                                            href="#applyJobs" data-bs-toggle="modal" class="btn btn-soft-primary w-100">Candidate</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-body"><img src="/static/images/companies/adobe-photoshop.svg" alt=""
+                                                            height="50" class="mb-3">                <h5
+                                        class="fs-17 mb-2"><a href="javascript:void(0);" class="text-dark">Product
+                                    Designer</a> <small class="text-muted fw-normal">(0-2 Yrs Exp)</small></h5>
+                                    <ul class="list-inline mb-0">
+                                        <li class="list-inline-item"><p class="text-muted fs-14 mb-1">Skote Technology
+                                            Pvt.Ltd</p></li>
+                                        <li class="list-inline-item"><p class="text-muted fs-14 mb-0"><i
+                                                class="mdi mdi-map-marker"></i>California</p></li>
+                                        <li class="list-inline-item"><p class="text-muted fs-14 mb-0"><i
+                                                class="uil uil-wallet"></i>$250 - $800 / month</p></li>
+                                    </ul>
+                                    <div class="row">
+                                        <div class="mt-3 hstack gap-2 col"><span
+                                                class="badge rounded-1 badge-soft-success">Full Time</span><span
+                                                class="badge rounded-1 badge-soft-warning">Urgent</span><span
+                                                class="badge rounded-1 badge-soft-info">Private</span></div>
+                                        <div class="avatar-group col">
+                                            <div class="avatar-group-item"><a href="#" class="d-inline-block"> <img
+                                                    src="/static/images/users/avatar-4.jpg" alt=""
+                                                    class="rounded-circle avatar-xs"> </a></div>
+                                            <div class="avatar-group-item"><a href="#" class="d-inline-block"> <img
+                                                    src="/static/images/users/avatar-1.jpg" alt=""
+                                                    class="rounded-circle avatar-xs"> </a></div>
+                                            <div class="avatar-group-item"><a href="#" class="d-inline-block"> <img
+                                                    src="/static/images/users/avatar-6.jpg" alt=""
+                                                    class="rounded-circle avatar-xs"> </a></div>
+                                            <div classname="avatar-group-item"><a href="#" classname="d-inline-block">
+                                                <span class="avatar-title rounded-circle bg-danger text-white font-size-16 ps-2 pe-2">                                                                     3+                                                                 </span>
+                                            </a></div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 hstack gap-2"><a href="/vacancies/detail/2" target="_blank"
+                                                                      class="btn btn-soft-success w-100">Details</a> <a
+                                            href="#applyJobs" data-bs-toggle="modal" class="btn btn-soft-primary w-100">Candidate</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-body"><img src="/static/images/companies/airbnb.svg" alt="" height="50"
+                                                            class="mb-3">                <h5 class="fs-17 mb-2"><a
+                                        href="javascript:void(0);" class="text-dark">Marketing Director</a> <small
+                                        class="text-muted fw-normal">(0-2 Yrs Exp)</small></h5>
+                                    <ul class="list-inline mb-0">
+                                        <li class="list-inline-item"><p class="text-muted fs-14 mb-1">Skote Technology
+                                            Pvt.Ltd</p></li>
+                                        <li class="list-inline-item"><p class="text-muted fs-14 mb-0"><i
+                                                class="mdi mdi-map-marker"></i>California</p></li>
+                                        <li class="list-inline-item"><p class="text-muted fs-14 mb-0"><i
+                                                class="uil uil-wallet"></i>$250 - $800 / month</p></li>
+                                    </ul>
+                                    <div class="row">
+                                        <div class="mt-3 hstack gap-2 col"><span
+                                                class="badge rounded-1 badge-soft-success">Full Time</span><span
+                                                class="badge rounded-1 badge-soft-warning">Urgent</span><span
+                                                class="badge rounded-1 badge-soft-info">Private</span></div>
+                                        <div class="avatar-group col">
+                                            <div class="avatar-group-item"><a href="#" class="d-inline-block"> <img
+                                                    src="/static/images/users/avatar-4.jpg" alt=""
+                                                    class="rounded-circle avatar-xs"> </a></div>
+                                            <div class="avatar-group-item"><a href="#" class="d-inline-block"> <img
+                                                    src="/static/images/users/avatar-1.jpg" alt=""
+                                                    class="rounded-circle avatar-xs"> </a></div>
+                                            <div class="avatar-group-item"><a href="#" class="d-inline-block"> <img
+                                                    src="/static/images/users/avatar-6.jpg" alt=""
+                                                    class="rounded-circle avatar-xs"> </a></div>
+                                            <div classname="avatar-group-item"><a href="#" classname="d-inline-block">
+                                                <span class="avatar-title rounded-circle bg-danger text-white font-size-16 ps-2 pe-2">                                                                     3+                                                                 </span>
+                                            </a></div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 hstack gap-2"><a href="/vacancies/detail/3" target="_blank"
+                                                                      class="btn btn-soft-success w-100">Details</a> <a
+                                            href="#applyJobs" data-bs-toggle="modal" class="btn btn-soft-primary w-100">Candidate</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-body"><img src="/static/images/companies/amazon.svg" alt="" height="50"
+                                                            class="mb-3">                <h5 class="fs-17 mb-2"><a
+                                        href="javascript:void(0);" class="text-dark">Project Manager</a> <small
+                                        class="text-muted fw-normal">(0-2 Yrs Exp)</small></h5>
+                                    <ul class="list-inline mb-0">
+                                        <li class="list-inline-item"><p class="text-muted fs-14 mb-1">Skote Technology
+                                            Pvt.Ltd</p></li>
+                                        <li class="list-inline-item"><p class="text-muted fs-14 mb-0"><i
+                                                class="mdi mdi-map-marker"></i>California</p></li>
+                                        <li class="list-inline-item"><p class="text-muted fs-14 mb-0"><i
+                                                class="uil uil-wallet"></i>$250 - $800 / month</p></li>
+                                    </ul>
+                                    <div class="row">
+                                        <div class="mt-3 hstack gap-2 col"><span
+                                                class="badge rounded-1 badge-soft-success">Full Time</span><span
+                                                class="badge rounded-1 badge-soft-warning">Urgent</span><span
+                                                class="badge rounded-1 badge-soft-info">Private</span></div>
+                                        <div class="avatar-group col">
+                                            <div class="avatar-group-item"><a href="#" class="d-inline-block"> <img
+                                                    src="/static/images/users/avatar-4.jpg" alt=""
+                                                    class="rounded-circle avatar-xs"> </a></div>
+                                            <div class="avatar-group-item"><a href="#" class="d-inline-block"> <img
+                                                    src="/static/images/users/avatar-1.jpg" alt=""
+                                                    class="rounded-circle avatar-xs"> </a></div>
+                                            <div class="avatar-group-item"><a href="#" class="d-inline-block"> <img
+                                                    src="/static/images/users/avatar-6.jpg" alt=""
+                                                    class="rounded-circle avatar-xs"> </a></div>
+                                            <div classname="avatar-group-item"><a href="#" classname="d-inline-block">
+                                                <span class="avatar-title rounded-circle bg-danger text-white font-size-16 ps-2 pe-2">                                                                     3+                                                                 </span>
+                                            </a></div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 hstack gap-2"><a href="/vacancies/detail/4" target="_blank"
+                                                                      class="btn btn-soft-success w-100">Details</a> <a
+                                            href="#applyJobs" data-bs-toggle="modal" class="btn btn-soft-primary w-100">Candidate</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-body"><img src="/static/images/companies/flutter.svg" alt=""
+                                                            height="50" class="mb-3">                <h5
+                                        class="fs-17 mb-2"><a href="javascript:void(0);" class="text-dark">HTML
+                                    Developer</a> <small class="text-muted fw-normal">(0-2 Yrs Exp)</small></h5>
+                                    <ul class="list-inline mb-0">
+                                        <li class="list-inline-item"><p class="text-muted fs-14 mb-1">Skote Technology
+                                            Pvt.Ltd</p></li>
+                                        <li class="list-inline-item"><p class="text-muted fs-14 mb-0"><i
+                                                class="mdi mdi-map-marker"></i>California</p></li>
+                                        <li class="list-inline-item"><p class="text-muted fs-14 mb-0"><i
+                                                class="uil uil-wallet"></i>$250 - $800 / month</p></li>
+                                    </ul>
+                                    <div class="row">
+                                        <div class="mt-3 hstack gap-2 col"><span
+                                                class="badge rounded-1 badge-soft-success">Full Time</span><span
+                                                class="badge rounded-1 badge-soft-warning">Urgent</span><span
+                                                class="badge rounded-1 badge-soft-info">Private</span></div>
+                                        <div class="avatar-group col">
+                                            <div class="avatar-group-item"><a href="#" class="d-inline-block"> <img
+                                                    src="/static/images/users/avatar-4.jpg" alt=""
+                                                    class="rounded-circle avatar-xs"> </a></div>
+                                            <div class="avatar-group-item"><a href="#" class="d-inline-block"> <img
+                                                    src="/static/images/users/avatar-1.jpg" alt=""
+                                                    class="rounded-circle avatar-xs"> </a></div>
+                                            <div class="avatar-group-item"><a href="#" class="d-inline-block"> <img
+                                                    src="/static/images/users/avatar-6.jpg" alt=""
+                                                    class="rounded-circle avatar-xs"> </a></div>
+                                            <div classname="avatar-group-item"><a href="#" classname="d-inline-block">
+                                                <span class="avatar-title rounded-circle bg-danger text-white font-size-16 ps-2 pe-2">                                                                     3+                                                                 </span>
+                                            </a></div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 hstack gap-2"><a href="/vacancies/detail/5" target="_blank"
+                                                                      class="btn btn-soft-success w-100">Details</a> <a
+                                            href="#applyJobs" data-bs-toggle="modal" class="btn btn-soft-primary w-100">Candidate</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-body"><img src="/static/images/companies/mailchimp.svg" alt=""
+                                                            height="50" class="mb-3">                <h5
+                                        class="fs-17 mb-2"><a href="javascript:void(0);" class="text-dark">Business
+                                    Associate</a> <small class="text-muted fw-normal">(0-2 Yrs Exp)</small></h5>
+                                    <ul class="list-inline mb-0">
+                                        <li class="list-inline-item"><p class="text-muted fs-14 mb-1">Skote Technology
+                                            Pvt.Ltd</p></li>
+                                        <li class="list-inline-item"><p class="text-muted fs-14 mb-0"><i
+                                                class="mdi mdi-map-marker"></i>California</p></li>
+                                        <li class="list-inline-item"><p class="text-muted fs-14 mb-0"><i
+                                                class="uil uil-wallet"></i>$250 - $800 / month</p></li>
+                                    </ul>
+                                    <div class="row">
+                                        <div class="mt-3 hstack gap-2 col"><span
+                                                class="badge rounded-1 badge-soft-success">Full Time</span><span
+                                                class="badge rounded-1 badge-soft-warning">Urgent</span><span
+                                                class="badge rounded-1 badge-soft-info">Private</span></div>
+                                        <div class="avatar-group col">
+                                            <div class="avatar-group-item"><a href="#" class="d-inline-block"> <img
+                                                    src="/static/images/users/avatar-4.jpg" alt=""
+                                                    class="rounded-circle avatar-xs"> </a></div>
+                                            <div class="avatar-group-item"><a href="#" class="d-inline-block"> <img
+                                                    src="/static/images/users/avatar-1.jpg" alt=""
+                                                    class="rounded-circle avatar-xs"> </a></div>
+                                            <div class="avatar-group-item"><a href="#" class="d-inline-block"> <img
+                                                    src="/static/images/users/avatar-6.jpg" alt=""
+                                                    class="rounded-circle avatar-xs"> </a></div>
+                                            <div classname="avatar-group-item"><a href="#" classname="d-inline-block">
+                                                <span class="avatar-title rounded-circle bg-danger text-white font-size-16 ps-2 pe-2">                                                                     3+                                                                 </span>
+                                            </a></div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 hstack gap-2"><a href="/vacancies/detail/6" target="_blank"
+                                                                      class="btn btn-soft-success w-100">Details</a> <a
+                                            href="#applyJobs" data-bs-toggle="modal" class="btn btn-soft-primary w-100">Candidate</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-body"><img src="/static/images/companies/line.svg" alt="" height="50"
+                                                            class="mb-3">                <h5 class="fs-17 mb-2"><a
+                                        href="javascript:void(0);" class="text-dark">Product Sales Specialist</a> <small
+                                        class="text-muted fw-normal">(0-2 Yrs Exp)</small></h5>
+                                    <ul class="list-inline mb-0">
+                                        <li class="list-inline-item"><p class="text-muted fs-14 mb-1">Skote Technology
+                                            Pvt.Ltd</p></li>
+                                        <li class="list-inline-item"><p class="text-muted fs-14 mb-0"><i
+                                                class="mdi mdi-map-marker"></i>California</p></li>
+                                        <li class="list-inline-item"><p class="text-muted fs-14 mb-0"><i
+                                                class="uil uil-wallet"></i>$250 - $800 / month</p></li>
+                                    </ul>
+                                    <div class="row">
+                                        <div class="mt-3 hstack gap-2 col"><span
+                                                class="badge rounded-1 badge-soft-success">Full Time</span><span
+                                                class="badge rounded-1 badge-soft-warning">Urgent</span><span
+                                                class="badge rounded-1 badge-soft-info">Private</span></div>
+                                        <div class="avatar-group col">
+                                            <div class="avatar-group-item"><a href="#" class="d-inline-block"> <img
+                                                    src="/static/images/users/avatar-4.jpg" alt=""
+                                                    class="rounded-circle avatar-xs"> </a></div>
+                                            <div class="avatar-group-item"><a href="#" class="d-inline-block"> <img
+                                                    src="/static/images/users/avatar-1.jpg" alt=""
+                                                    class="rounded-circle avatar-xs"> </a></div>
+                                            <div class="avatar-group-item"><a href="#" class="d-inline-block"> <img
+                                                    src="/static/images/users/avatar-6.jpg" alt=""
+                                                    class="rounded-circle avatar-xs"> </a></div>
+                                            <div classname="avatar-group-item"><a href="#" classname="d-inline-block">
+                                                <span class="avatar-title rounded-circle bg-danger text-white font-size-16 ps-2 pe-2">                                                                     3+                                                                 </span>
+                                            </a></div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 hstack gap-2"><a href="/vacancies/detail/7" target="_blank"
+                                                                      class="btn btn-soft-success w-100">Details</a> <a
+                                            href="#applyJobs" data-bs-toggle="modal" class="btn btn-soft-primary w-100">Candidate</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-body"><img src="/static/images/companies/spotify.svg" alt=""
+                                                            height="50" class="mb-3">                <h5
+                                        class="fs-17 mb-2"><a href="javascript:void(0);" class="text-dark">Magento
+                                    Developer</a> <small class="text-muted fw-normal">(0-2 Yrs Exp)</small></h5>
+                                    <ul class="list-inline mb-0">
+                                        <li class="list-inline-item"><p class="text-muted fs-14 mb-1">Skote Technology
+                                            Pvt.Ltd</p></li>
+                                        <li class="list-inline-item"><p class="text-muted fs-14 mb-0"><i
+                                                class="mdi mdi-map-marker"></i>California</p></li>
+                                        <li class="list-inline-item"><p class="text-muted fs-14 mb-0"><i
+                                                class="uil uil-wallet"></i>$250 - $800 / month</p></li>
+                                    </ul>
+                                    <div class="row">
+                                        <div class="mt-3 hstack gap-2 col"><span
+                                                class="badge rounded-1 badge-soft-success">Full Time</span><span
+                                                class="badge rounded-1 badge-soft-warning">Urgent</span><span
+                                                class="badge rounded-1 badge-soft-info">Private</span></div>
+                                        <div class="avatar-group col">
+                                            <div class="avatar-group-item"><a href="#" class="d-inline-block"> <img
+                                                    src="/static/images/users/avatar-4.jpg" alt=""
+                                                    class="rounded-circle avatar-xs"> </a></div>
+                                            <div class="avatar-group-item"><a href="#" class="d-inline-block"> <img
+                                                    src="/static/images/users/avatar-1.jpg" alt=""
+                                                    class="rounded-circle avatar-xs"> </a></div>
+                                            <div class="avatar-group-item"><a href="#" class="d-inline-block"> <img
+                                                    src="/static/images/users/avatar-6.jpg" alt=""
+                                                    class="rounded-circle avatar-xs"> </a></div>
+                                            <div classname="avatar-group-item"><a href="#" classname="d-inline-block">
+                                                <span class="avatar-title rounded-circle bg-danger text-white font-size-16 ps-2 pe-2">                                                                     3+                                                                 </span>
+                                            </a></div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 hstack gap-2"><a href="/vacancies/detail/8" target="_blank"
+                                                                      class="btn btn-soft-success w-100">Details</a> <a
+                                            href="#applyJobs" data-bs-toggle="modal" class="btn btn-soft-primary w-100">Candidate</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="tab_Vacancies_Sempre_Aperte" role="tabpanel">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="card jobs-categories">
+                            <div class="card-body">
+                                <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block mb-2">Accounting
+                                    &
+                                    Finance
+                                    <span class="badge text-bg-info float-end bg-opacity-100">52</span></a>
+                                <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block mb-2">Development
+                                    <span
+                                            class="badge text-bg-info float-end bg-opacity-100">10</span></a>
+                                <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block mb-2">Customer
+                                    Service
+                                    <span class="badge text-bg-info float-end bg-opacity-100">64</span></a>
+                                <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block mb-2">Marketing
+                                    <span
+                                            class="badge text-bg-info float-end bg-opacity-100">105</span></a>
+                                <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block mb-2">Human
+                                    Resource
+                                    <span
+                                            class="badge text-bg-info float-end bg-opacity-100">142</span></a>
+                                <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block mb-2">Health
+                                    and
+                                    Care
+                                    <span
+                                            class="badge text-bg-info float-end bg-opacity-100">01</span></a>
+                                <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block mb-2">Project
+                                    Management<span
+                                            class="badge text-bg-info float-end bg-opacity-100">254</span></a>
+                                <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block">Automotive
+                                    Jobs
+                                    <span
+                                            class="badge text-bg-info float-end bg-opacity-100">79</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="card jobs-categories">
+                            <div class="card-body">
+                                <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block mb-2">Accounting
+                                    &
+                                    Finance
+                                    <span class="badge text-bg-info float-end bg-opacity-100">52</span></a>
+                                <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block mb-2">Development
+                                    <span
+                                            class="badge text-bg-info float-end bg-opacity-100">10</span></a>
+                                <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block mb-2">Customer
+                                    Service
+                                    <span class="badge text-bg-info float-end bg-opacity-100">64</span></a>
+                                <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block mb-2">Marketing
+                                    <span
+                                            class="badge text-bg-info float-end bg-opacity-100">105</span></a>
+                                <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block mb-2">Human
+                                    Resource
+                                    <span
+                                            class="badge text-bg-info float-end bg-opacity-100">142</span></a>
+                                <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block mb-2">Health
+                                    and
+                                    Care
+                                    <span
+                                            class="badge text-bg-info float-end bg-opacity-100">01</span></a>
+                                <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block mb-2">Project
+                                    Management<span
+                                            class="badge text-bg-info float-end bg-opacity-100">254</span></a>
+                                <a href="#!" class="px-3 py-2 rounded bg-light bg-opacity-50 d-block">Automotive
+                                    Jobs
+                                    <span
+                                            class="badge text-bg-info float-end bg-opacity-100">79</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

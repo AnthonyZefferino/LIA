@@ -1,0 +1,100 @@
+{% load i18n %}
+{% load static %}
+
+<div class="card">
+    <div class="card-body">
+        <div class="text-center">
+            <img src="{% static 'images/companies/adobe-photoshop.svg' %}" alt="" height="50"
+                 class="mx-auto d-block">
+            {% if office.identifier %}
+                <h5 class="mt-3 mb-1">{{ office.identifier }}</h5>
+                <p class="text-muted mb-0">{% trans 'Since' %} {{ office.created_at }}</p>
+            {% endif %}
+        </div>
+        <ul class="list-unstyled mt-4">
+
+            <li>
+                <div class="d-flex">
+                    <div class="ms-3">
+                        <h6 class="fs-14 mb-2">{% trans 'is_legal' %}</h6>
+                        <p class="text-muted fs-14 mb-0">{{ office.is_legal }}</p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="d-flex">
+                    <div class="ms-3">
+                        <h6 class="fs-14 mb-2">{% trans 'is_operative' %}</h6>
+                        <p class="text-muted fs-14 mb-0">{{ office.is_operative }}</p>
+                    </div>
+                </div>
+            </li>
+
+            {% if office.address %}
+                <li>
+                    <div class="d-flex">
+                        <div class="ms-3">
+                            <h6 class="fs-14 mb-2">{% trans 'address' %}</h6>
+                            <p class="text-muted fs-14 mb-0">{{ office.address }} {{ office.civic_number }} {{ office.municipality_province }} {{ office.country }}</p>
+                        </div>
+                    </div>
+                </li>
+            {% endif %}
+            {% if office.phone %}
+                <li>
+                    <div class="d-flex">
+                        <div class="ms-3">
+                            <h6 class="fs-14 mb-2">{% trans 'phone' %}</h6>
+                            <p class="text-muted fs-14 mb-0">{{ office.phone }}</p>
+                        </div>
+                    </div>
+                </li>
+            {% endif %}
+            {% if office.mobile %}
+                <li>
+                    <div class="d-flex">
+                        <div class="ms-3">
+                            <h6 class="fs-14 mb-2">{% trans 'mobile' %}</h6>
+                            <p class="text-muted fs-14 mb-0">{{ office.mobile }}</p>
+                        </div>
+                    </div>
+                </li>
+            {% endif %}
+            {% if office.email %}
+                <li>
+                    <div class="d-flex">
+                        <div class="ms-3">
+                            <h6 class="fs-14 mb-2">{% trans 'email' %}</h6>
+                            <p class="text-muted fs-14 mb-0">{{ office.email }}</p>
+                        </div>
+                    </div>
+                </li>
+            {% endif %}
+            {% if office.fax %}
+                <li>
+                    <div class="d-flex">
+                        <div class="ms-3">
+                            <h6 class="fs-14 mb-2">{% trans 'fax' %}</h6>
+                            <p class="text-muted fs-14 mb-0">{{ office.fax }}</p>
+                        </div>
+                    </div>
+                </li>
+            {% endif %}
+            {% if office.fax %}
+                <li>
+                    <div class="d-flex">
+                        <div class="ms-3">
+                            <h6 class="fs-14 mb-2">{% trans 'fax' %}</h6>
+                            <p class="text-muted fs-14 mb-0">{{ office.fax }}</p>
+                        </div>
+                    </div>
+                </li>
+            {% endif %}
+
+        </ul>
+        <div class="mt-4">
+            <a href="#!" class="btn btn-soft-primary btn-hover w-100 rounded"><i class="mdi mdi-eye"></i>
+                {% trans 'View Office' %}</a>
+        </div>
+    </div>
+</div>

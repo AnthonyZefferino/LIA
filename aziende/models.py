@@ -106,7 +106,7 @@ class Company(models.Model):
     email = models.EmailField(_("Email"), blank=True, null=True)
     phone_mobile = models.CharField(_("Phone"), max_length=20, blank=True, null=True)
     phone_number = models.CharField(_("Phone Number"), max_length=20, blank=True, null=True)
-    number_employees = models.IntegerField(_("Number of employees"),  blank=True, null=True)
+    number_employees = models.IntegerField(_("Number of employees"), blank=True, null=True)
     address = models.TextField(_("Address"), blank=True, null=True)
     website = models.URLField(_("Website"), blank=True, null=True)
     date_created = models.DateTimeField(_("Date Created"), auto_now_add=True)
@@ -178,9 +178,13 @@ class Office(models.Model):
     fax = models.CharField(_("Fax"), max_length=20, null=True, blank=True)
     country = models.ForeignKey(Country, on_delete=models.CASCADE, verbose_name=_("Country"))
     municipality_province = models.ForeignKey(MunicipalityProvince, on_delete=models.CASCADE,
-                                              verbose_name=_("Municipality Province"))
+                                              verbose_name=_("Municipality Province")) 
     created_at = models.DateTimeField(_("Created At"), auto_now_add=True)
     updated_at = models.DateTimeField(_("Updated At"), auto_now=True)
+
+
+
+
 
     class Meta:
         verbose_name = _('office')

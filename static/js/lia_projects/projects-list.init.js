@@ -23,7 +23,7 @@ $(document).ready(function () {
     };
 
 // Ottieni i dati JSON delle compagnie.
-    var companyApiEndpoint = '/aziende/companies/api/view_list/';
+    var companyApiEndpoint = '/lia_projects/api/view_list/';
     getApiData(companyApiEndpoint, function (err, data) {
         if (err !== null) {
             console.log("Something went wrong: " + err);

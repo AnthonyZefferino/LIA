@@ -5,37 +5,57 @@
     <div class="vertical-menu">
         <div data-simplebar class="h-100">
             <!--- Sidemenu -->
-            <div id="sidebar-menu">
+            <div id="sidebar-menu" class="mt-0 pt-0">
                 <!-- Left Menu Start -->
                 <ul class="metismenu list-unstyled" id="side-menu">
-
-                    <li>
-                        <a href="{% url 'dashboard' %}" key="t-default">
-                            <i class="bx bx-home-circle"></i>
-                            <span key="t-dashboards">Dashboards</span>
-                        </a>
-                    </li>
-                    <li class="menu-title" key="t-components">
-                        <hr>
-                    </li>
+{#                    <li class="menu-title m-0" key="t-components">#}
+{#                        <hr>#}
+{#                    </li>#}
 
                     <li>
                         <a href="javascript: void(0);" class="has-arrow waves-effect">
-                            <i class="bx bx-briefcase-alt-2"></i>
+                            <i class="bx bx-compass"></i>
                             <span key="t-projects">{% trans 'Company' %}</span>
                         </a>
                         <ul>
-                            <li>
-                                <a href="{% url 'aziende:company-list' %}" key="t-p-grid">{% trans 'Aziende' %}</a>
+
+                               <li>
+                                <a href="{% url 'aziende:company-list' industry='ENTI' %}" key="t-p-grid">ENTI</a>
                             </li>
-                            <li><a href="{% url 'dashboard_saas' %}" key="t-saas">PROGETTI</a></li>
-                            <li>
-                                <a href="{% url 'dashboard_crypto' %}" key="t-crypto">VACANCIES</a>
+                               <li>
+                                <a href="{% url 'aziende:company-list' industry='PARTNER' %}" key="t-p-grid">PARTNER</a>
                             </li>
-                            <li><a href="{% url 'dashboard_blog' %}" key="t-blog">CANDIDATI</a></li>
+                               <li>
+                                <a href="{% url 'aziende:company-list' industry='CLIENTI' %}" key="t-p-grid">CLIENTI</a>
+                            </li>
+                               <li>
+                                <a href="{% url 'aziende:company-list' industry='SOSTENITORI' %}" key="t-p-grid">SOSTENITORI</a>
+                            </li>
+                               <li>
+                                <a href="{% url 'aziende:company-list' industry='CONSULENTI DEL LAVORO' %}" key="t-p-grid">CONSULENTI DEL LAVORO</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'aziende:company-list' industry='COOPERATIVE' %}" key="t-p-grid">COOPERATIVE</a>
+                            </li>
                         </ul>
                     </li>
-
+                  <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="bx bx-user-voice"></i>
+                            <span key="t-projects">{% trans 'Vacancies' %}</span>
+                        </a>
+                        <ul>
+                               <li>
+                                <a href="{% url 'vacancies:vacancies-grid' %}" key="t-p-grid">Attive</a>
+                            </li>
+                             <li>
+                                <a href="{% url 'vacancies:vacancies-grid' %}" key="t-p-grid">Sempre Attive</a>
+                            </li>
+                               <li>
+                                <a href="{% url 'vacancies:vacancies-grid'%}" key="t-p-grid">Storico</a>
+                            </li>
+                        </ul>
+                    </li>
 
                     <li class="menu-title" key="t-components">
                         <hr>

@@ -18,6 +18,7 @@ from rest_framework.decorators import api_view
 from .api import CompanySerializer
 from django.utils.translation import gettext_lazy as _
 from pprint import pprint
+from django.db.models import Q
 
 
 def ajax_login_required(view_func):
@@ -41,7 +42,11 @@ def company_delete_api(request, pk):
 @api_view(['GET'])
 @ajax_login_required
 def companies_api(request):
-    companies = Company.objects.all()
+    industry = request.GET.get('industry')
+    if industry is not None:
+        companies = Company.objects.filter(industry__name=industry)
+    else:
+        companies = Company.objects.all()
     serializer = CompanySerializer(companies, many=True)
     return Response(serializer.data)
 
@@ -120,15 +125,27 @@ class CompanyListView(ListView):
     template_name = 'aziende/company_list.html'
     context_object_name = 'companies'
 
+    def get_queryset(self):
+        industry = self.kwargs.get('industry', None)
+        if industry is not None:
+            queryset = Company.objects.filter(Q(industry__name=industry))
+        else:
+            queryset = Company.objects.all()
+        return queryset
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        # context['pageview'] = "Company"
-        # context['model'] = self.model  # Aggiungi il modello al contesto
+        industry = self.kwargs.get('industry', None)
+        if industry is not None:
+            context['pageview'] = industry
+            context['industry'] = industry
+        else:
+            context['pageview'] = "Tutte le industrie"
+            context['industry'] = None
         return context
 
 
-from django.shortcuts import get_object_or_404
 
 
 class CompanyDetailView(LoginRequiredMixin, DetailView):

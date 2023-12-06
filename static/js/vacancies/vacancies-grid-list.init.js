@@ -6,7 +6,7 @@ Contact: themesbrand@gmail.com
 File: job list Init Js File
 */
 
-var url = "/static/json/";
+var url = "/static/js/vacancies/";
 var allJobList = '';
 
 var prevButton = document.getElementById('page-prev');
@@ -54,47 +54,70 @@ function loadJobListData(datas, page) {
 
     for (var i = (page - 1) * itemsPerPage; i < (page * itemsPerPage) && i < datas.length; i++) {
         // datas.forEach(function (listData, index) {
-            if (datas[i]) {
-        var tagHtmlValue = '';
-        Array.from(datas[i].requirement).forEach(function (tag, index) {
-            var tagClass = '';
-            if (tag == "Full Time") {
-                tagClass = 'badge-soft-success'
-            } else if (tag == "Urgent") {
-                tagClass = 'badge-soft-warning'
-            } else if (tag == "Private") {
-                tagClass = 'badge-soft-info'
-            }
+        if (datas[i]) {
+            var tagHtmlValue = '';
+            Array.from(datas[i].requirement).forEach(function (tag, index) {
+                var tagClass = '';
+                if (tag == "Full Time") {
+                    tagClass = 'badge-soft-success'
+                } else if (tag == "Urgent") {
+                    tagClass = 'badge-soft-warning'
+                } else if (tag == "Private") {
+                    tagClass = 'badge-soft-info'
+                }
 
-            tagHtmlValue += '<span class="badge rounded-1 ' + tagClass + '">' + tag + '</span>'
-        })
-
-        document.querySelector("#jobgrid-list").innerHTML += '<div class="col-xl-3 col-md-6">\
+                tagHtmlValue += '<span class="badge rounded-1 ' + tagClass + '">' + tag + '</span>'
+            })
+            var vacancyDetailsUrl = "/vacancies/detail/" + datas[i].id;
+            document.querySelector("#jobgrid-list").innerHTML += '<div class="col-xl-3 col-md-6">\
         <div class="card">\
             <div class="card-body">\
-                <img src="'+ datas[i].image + '" alt="" height="50" class="mb-3">\
-                <h5 class="fs-17 mb-2"><a href="javascript:void(0);" class="text-dark">'+ datas[i].jobTitle + '</a> <small class="text-muted fw-normal">(' + datas[i].experience + ')</small></h5>\
+                <img src="' + datas[i].image + '" alt="" height="50" class="mb-3">\
+                <h5 class="fs-17 mb-2"><a href="javascript:void(0);" class="text-dark">' + datas[i].jobTitle + '</a> <small class="text-muted fw-normal">(' + datas[i].experience + ')</small></h5>\
                 <ul class="list-inline mb-0">\
                     <li class="list-inline-item">\
-                        <p class="text-muted fs-14 mb-1">'+ datas[i].companyName + '</p>\
+                        <p class="text-muted fs-14 mb-1">' + datas[i].companyName + '</p>\
                     </li>\
                     <li class="list-inline-item">\
-                        <p class="text-muted fs-14 mb-0"><i class="mdi mdi-map-marker"></i>'+ datas[i].location + '</p>\
+                        <p class="text-muted fs-14 mb-0"><i class="mdi mdi-map-marker"></i>' + datas[i].location + '</p>\
                     </li>\
                     <li class="list-inline-item">\
-                        <p class="text-muted fs-14 mb-0"><i class="uil uil-wallet"></i>'+ datas[i].salary + '</p>\
+                        <p class="text-muted fs-14 mb-0"><i class="uil uil-wallet"></i>' + datas[i].salary + '</p>\
                     </li>\
                 </ul>\
-                <div class="mt-3 hstack gap-2">'+ tagHtmlValue + '</div>\
+                <div class="row"><div class="mt-3 hstack gap-2 col">' + tagHtmlValue + '</div>\
+                <div class="avatar-group col">\
+                    <div class="avatar-group-item">\
+                    <a href="#" class="d-inline-block">\
+                        <img src="/static/images/users/avatar-4.jpg" alt="" class="rounded-circle avatar-xs">\
+                    </a>\
+                    </div>\
+                    <div class="avatar-group-item">\
+                    <a href="#" class="d-inline-block">\
+                        <img src="/static/images/users/avatar-1.jpg" alt="" class="rounded-circle avatar-xs">\
+                    </a>\
+                    </div>\
+                    \<div class="avatar-group-item">\
+                    <a href="#" class="d-inline-block">\
+                        <img src="/static/images/users/avatar-6.jpg" alt="" class="rounded-circle avatar-xs">\
+                    </a>\
+                    </div>\
+            <div className="avatar-group-item">\
+                <a href="#" className="d-inline-block">\
+                  <span class="avatar-title rounded-circle bg-danger text-white font-size-16 ps-2 pe-2">\
+                                                                     3+ \
+                                                                </span>\
+                </a>\
+            </div></div>\
+                </div>\
                 <div class="mt-4 hstack gap-2">\
-                    <a href="#!" data-bs-toggle="modal" class="btn btn-soft-success w-100">View Profile</a>\
-                    <a href="#applyJobs" data-bs-toggle="modal" class="btn btn-soft-primary w-100">Apply Now</a>\
+                    <a href="' + vacancyDetailsUrl + '" target="_blank" class="btn btn-soft-success w-100">Details</a>\
+                    <a href="#applyJobs" data-bs-toggle="modal" class="btn btn-soft-primary w-100">Candidate</a>\
                 </div>\
             </div>\
         </div>\
     </div>';
-        // });
-    }
+        }
     }
     selectedPage();
     currentPage == 1 ? prevButton.classList.add('disabled') : prevButton.classList.remove('disabled');
@@ -121,7 +144,8 @@ $('#datepicker1 input').datepicker('setDate', today).on('changeDate', function (
     }
 
     loadJobListData(filterData, currentPage);
-});;
+});
+;
 
 function selectedPage() {
     var pagenumLink = document.getElementById('page-num').getElementsByClassName('clickPageNumber');
@@ -181,6 +205,7 @@ function paginationEvents() {
 var searchElementList = document.getElementById("searchJob");
 searchElementList.addEventListener("keyup", function () {
     var inputVal = searchElementList.value.toLowerCase();
+
     function filterItems(arr, query) {
         return arr.filter(function (el) {
             return el.jobTitle.toLowerCase().indexOf(query.toLowerCase()) !== -1
