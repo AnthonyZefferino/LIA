@@ -1,0 +1,12 @@
+# Ignore pycache directories
+__pycache__/
+
+# Ignore .env files
+.env
+
+# Ignore node_modules directory
+# Exclude .idea directory
+.idea/
+Skote Readme.txt
+
+

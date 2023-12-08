@@ -2,6 +2,9 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../TisIA/tisia-vue" vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../python_scraping_generali" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../python_scraping_unipol" vcs="Git" />
   </component>
 </project>
