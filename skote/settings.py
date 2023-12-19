@@ -45,9 +45,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'simple_history',
     'widget_tweaks',
+    'custom_users',
     'aziende',
     'job_candidates',
+    'advancements',
     'utils',
     'vacancies',
     'lai_projects',
@@ -84,12 +87,16 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'skote.middleware.SetLanguageMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'simple_history.middleware.HistoryRequestMiddleware',
+
 ]
 
 ROOT_URLCONF = 'skote.urls'
@@ -154,29 +161,21 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 LANGUAGE_CODE = 'it'
 TIME_ZONE = 'Europe/Rome'
-
 USE_I18N = True
-
 USE_L10N = True
-
-USE_TZ = False
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.1/howto/static-files/
-
+USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
-
+MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL = "/media/"
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
 AUTHENTICATION_BACKENDS = [
-
-    # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
-
-    # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
-# Provider specific settings
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
@@ -222,6 +221,7 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 # login url
 LOGIN_URL = 'account_login'
+AUTH_USER_MODEL = 'custom_users.CustomUser'
 SITE_ID = 2
 # ACCOUNT_SIGNUP_REDIRECT_URL = "account_logout"
 ACCOUNT_LOGOUT_ON_GET = True

@@ -21,6 +21,7 @@ from pprint import pprint
 from django.db.models import Q
 
 
+
 def ajax_login_required(view_func):
     @wraps(view_func)
     def _wrapped_view(request, *args, **kwargs):
@@ -146,9 +147,8 @@ class CompanyListView(ListView):
         return context
 
 
-
-
 class CompanyDetailView(LoginRequiredMixin, DetailView):
+
     model = Company
     template_name = 'aziende/company_detail.html'
     context_object_name = 'company'

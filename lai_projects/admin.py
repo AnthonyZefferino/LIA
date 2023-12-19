@@ -1,71 +1,75 @@
 from django.contrib import admin
 from django.urls import reverse
 from django.utils.html import format_html
-from .models import Project, BudgetYear, BudgetType, Budget, BudgetObjective
+from .models import Project, BudgetType, Budget, BudgetObjective, TargetProject, ProjectFile, BudgetYear
 from django.utils.translation import gettext_lazy as _
+from utils.models import CustomFieldChoiceProject
+
+
+class ProjectFileInline(admin.TabularInline):
+    model = ProjectFile
+    extra = 0
+
+
+
 
 
 class BudgetObjectiveInline(admin.TabularInline):
     model = BudgetObjective
-    extra = 1
-    fk_name = 'budget'
+    extra = 0
+    fk_name = 'budget_year'
 
-
-@admin.register(Budget)
-class BudgetAdmin(admin.ModelAdmin):
-    list_display = ('display_budget_year_link', 'budget_type', 'value')
-    list_select_related = ('budget_year__project', 'budget_type')
-    inlines = [BudgetObjectiveInline]
-
-    def display_budget_year_link(self, obj):
-        link = reverse("admin:projects_budgetyear_change", args=[obj.budget_year.id])
-        return format_html('<a href="{}">{}</a>', link, obj.budget_year)
-
-    display_budget_year_link.short_description = _("Budget Year")
-
-    def get_inline_instances(self, request, obj=None):
-        if not obj:
-            return []
-        return super(BudgetAdmin, self).get_inline_instances(request, obj)
 
 
 class BudgetInline(admin.TabularInline):
     model = Budget
-    extra = 1
-    show_change_link = True  # Allows you to click to the Budget detail page
+    extra = 0
+    show_change_link = True
     inlines = [BudgetObjectiveInline]
 
 
 @admin.register(BudgetYear)
 class BudgetYearAdmin(admin.ModelAdmin):
     list_display = ('project', 'year', 'budget_title')
-    inlines = [BudgetInline]
+    list_filter = (
+        'project',
+        'year',
+    )
+    inlines = [BudgetInline, BudgetObjectiveInline]
 
     def get_inline_instances(self, request, obj=None):
         if not obj:
             return []
         return super(BudgetYearAdmin, self).get_inline_instances(request, obj)
 
-
+class BudgetTypeInline(admin.StackedInline):
+    model = BudgetType
+    extra = 0
+    show_change_link = True  # This allows you to click to the BudgetYear detail page
 class BudgetYearInline(admin.StackedInline):
     model = BudgetYear
-    extra = 1
+    extra = 0
     show_change_link = True  # This allows you to click to the BudgetYear detail page
+
+
+class CustomFieldChoiceProjectInline(admin.TabularInline):
+    model = CustomFieldChoiceProject
+    extra = 0
 
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('project_title', 'company', 'project_type', 'start_date', 'end_date')
+    save_as = True
+    list_display = ('project_title', 'company', 'status', 'start_date', 'end_date')
     fieldsets = (
         (None, {
-            'fields': ('project_title', 'company', 'project_type', 'description',
-                       'start_date', 'end_date', 'target', 'lead_partne',
-                       'partner', 'supporters')
+            'fields': ('project_title', 'amount', 'company', 'description',
+                       'start_date', 'end_date', 'target', 'lead_partner',
+                       'partner', 'supporters', 'protected_category')
         }),
     )
-    inlines = [BudgetYearInline]
+    inlines = [CustomFieldChoiceProjectInline, ProjectFileInline]
 
 
-@admin.register(BudgetType)
-class BudgetTypeAdmin(admin.ModelAdmin):
-    list_display = ('description',)
+
+

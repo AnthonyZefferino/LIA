@@ -25,6 +25,7 @@ urlpatterns = [
     path("aziende/", include("aziende.urls")),
     path('vacancies/', include('vacancies.urls')),
     path('job_candidates/', include('job_candidates.urls')),
+    path('lia_projects/', include('lai_projects.urls')),
     # Dashboards View
     path('', views.DashboardView.as_view(), name='dashboard'),
     path('dashboard_saas', views.SaasView.as_view(), name='dashboard_saas'),

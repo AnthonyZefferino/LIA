@@ -1,0 +1,161 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% load i18n %}
+{% block extra_css %}
+    <link href="{% static 'libs/dropzone/dist/dropzone.css' %}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+{% block contents %}
+    <div class="row">
+        <div class="col-xl-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="fw-semibold  text-center">{% trans 'Overview' %}</h5>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                <th scope="col">{% trans 'project_title' %}</th>
+                                <td scope="col">{{ project.project_title }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="col">{% trans 'Company' %}</th>
+                                <td scope="col">{{ project.company.name }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{% trans 'Status Project' %}</th>
+                                <td>{{ project.status }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{% trans 'amount' %}</th>
+                                <td><span class="badge badge-soft-success">{{ project.amount }}</span></td>
+                            </tr>
+
+                            {% if project.protected_category %}
+                                <tr>
+                                    <th scope="row">{% trans 'protected_category' %}</th>
+                                    <td>
+                                        {% for category in project.protected_category.all %}
+                                            <span class="badge badge-soft-success">{{ category.description }}</span>
+                                        {% endfor %}
+                                    </td>
+                                </tr>
+                            {% endif %}
+                            <tr>
+                                <th scope="row">{% trans 'start_date' %}</th>
+                                <td>{{ project.start_date }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{% trans 'end_date' %}</th>
+                                <td>{{ project.end_date }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">{% trans 'lead_partner' %}</h4>
+                    <div class="table-responsive">
+                        <table class="table align-middle table-nowrap">
+                            <tbody>
+                            {% for lead_partner in project.lead_partner.all %}
+                                <tr>
+                                    <td style="width: 50px;"><img src="{% static 'images/users/avatar-2.jpg' %}"
+                                                                  class="rounded-circle avatar-xs" alt=""></td>
+                                    <td><h5 class="font-size-14 m-0"><a href="javascript: void(0);"
+                                                                        class="text-dark">{{ lead_partner }}</a></h5>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <a href="javascript: void(0);"
+                                               class="badge bg-primary-subtle text-primary font-size-11">{{ lead_partner.industy }}</a>
+                                            <a href="javascript: void(0);"
+                                               class="badge bg-primary-subtle text-primary font-size-11">{{ lead_partner.sector }}</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div> 
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">{% trans 'partner' %}</h4>
+                    <div class="table-responsive">
+                        <table class="table align-middle table-nowrap">
+                            <tbody>
+                            {% for partner in project.partner.all %}
+                                <tr>
+                                    <td style="width: 50px;"><img src="{% static 'images/users/avatar-2.jpg' %}"
+                                                                  class="rounded-circle avatar-xs" alt=""></td>
+                                    <td><h5 class="font-size-14 m-0"><a href="javascript: void(0);"
+                                                                        class="text-dark">{{ partner }}</a></h5>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <a href="javascript: void(0);"
+                                               class="badge bg-primary-subtle text-primary font-size-11">{{ partner.industy }}</a>
+                                            <a href="javascript: void(0);"
+                                               class="badge bg-primary-subtle text-primary font-size-11">{{ partner.sector }}</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+         
+        
+        <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">{% trans 'supporters' %}</h4>
+                    <div class="table-responsive">
+                        <table class="table align-middle table-nowrap">
+                            <tbody>
+                            {% for supporter in project.supporters.all %}
+                                <tr>
+                                    <td style="width: 50px;"><img src="{% static 'images/users/avatar-2.jpg' %}"
+                                                                  class="rounded-circle avatar-xs" alt=""></td>
+                                    <td><h5 class="font-size-14 m-0"><a href="javascript: void(0);"
+                                                                        class="text-dark">{{ supporter }}</a></h5>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <a href="javascript: void(0);"
+                                               class="badge bg-primary-subtle text-primary font-size-11">{{ supporter.industy }}</a>
+                                            <a href="javascript: void(0);"
+                                               class="badge bg-primary-subtle text-primary font-size-11">{{ supporter.sector }}</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div> 
+        </div><!--end col-->
+        <div class="col-xl-9">
+            {% include 'lia_projectc/project-detail-tab.html' %}
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
+{% block extra_javascript %}
+    <!-- Plugins js -->
+    <script src="{% static 'libs/dropzone/dist/dropzone-min.js' %}"></script>
+
+    <!-- Form file upload init js -->
+    <script src="{% static 'js/pages/form-file-upload.init.js' %}"></script>
+
+{% endblock %}

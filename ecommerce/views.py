@@ -60,7 +60,7 @@ class CustomersView(LoginRequiredMixin,View):
                 address = request.POST['address']
                 page_number = request.POST['page_number']
 
-                user = Customers.objects.filter(id=id).update(username=username,email=email,phone=phone,rating=rating,wallet_balance=wallet_balance,address=address)
+                # user = Customers.objects.filter(id=id).update(username=username,email=email,phone=phone,rating=rating,wallet_balance=wallet_balance,address=address)
                 return redirect("/ecommerce/customers" + "?page="+str(page_number))
             if "deleteCustomer" in request.POST:
                 id = request.POST['id']

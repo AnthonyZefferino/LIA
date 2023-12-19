@@ -1,0 +1,136 @@
+{% load i18n %}
+{% load static %}
+<div class="card">
+    <div class="card-body">
+        <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
+            <li class="nav-item waves-effect waves-light">
+                <a class="nav-link active" data-bs-toggle="tab" href="#tab_details" role="tab">
+                    <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
+                    <span class="d-none d-sm-block">Details</span>
+                </a>
+            </li>
+            <li class="nav-item waves-effect waves-light">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab_aziende_contattate" role="tab">
+                    <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                    <span class="d-none d-sm-block">Budget Target</span>
+                </a>
+            </li>
+            <li class="nav-item waves-effect waves-light">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab_proposed_candidates" role="tab">
+                    <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
+                    <span class="d-none d-sm-block">Proposed candidates</span>
+                </a>
+            </li>
+            <li class="nav-item waves-effect waves-light">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab_file_manager" role="tab">
+                    <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
+                    <span class="d-none d-sm-block">Files</span>
+                </a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content p-3 text-muted">
+            <div class="tab-pane active" id="tab_details" role="tabpanel">
+                {% include 'lia_projectc/project-detail-card.html' %}
+            </div>
+            <div class="tab-pane  " id="tab_aziende_contattate" role="tabpanel">
+                <div class="row">
+                    {% for budget_year in budget_years %}
+                        <div class="col-6">
+                            <div class="car">
+                                <div class="card-header"><h3>Budget Year: {{ budget_year.year }}</h3></div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col"><h4>Target Controllo</h4>
+                                            <table class="table">
+                                                <tbody>
+                                                {% for year, objectives in budget_objectives.items %}
+                                                    {% if year == budget_year.id %}
+                                                        {% for objective in objectives %}
+                                                            <tr>
+                                                                <th>Target</th>
+                                                                <td>{{ objective.control_date }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Valore</th>
+                                                                <td>{{ objective.target_value }}%</td>
+                                                            </tr>
+                                                            {% if budget.value_consolidate_percentage %}
+                                                                <tr>
+                                                                    <th>Esito controllo</th>
+                                                                    <td>  {{ objective.control_result }}</td>
+                                                                </tr>
+                                                            {% endif %}
+                                                            <tr>
+                                                                <th colspan="2">
+                                                                    <hr>
+                                                                </th>
+                                                            </tr>
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col">
+                                            {% for year, budgets in budgets.items %}
+                                                {% if year == budget_year.id %}
+                                                    <h4>Budget</h4>
+                                                    <table class="table">
+                                                        <tbody>
+                                                        {% for budget in budgets %}
+                                                            <tr>
+                                                                <th colspan="2">
+                                                                    <strong>{{ budget.budget_type.description }}</strong>
+                                                                </th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>
+                                                                    Value
+                                                                </th>
+                                                                <th>{{ budget.value_type }} €</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Value Consolidate</th>
+                                                                <td>>
+                                                                    {% if budget.value_consolidate %}
+                                                                        {{ budget.value_consolidate }} {% endif %}
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Value Consolidate Percentage:</th>
+                                                                <td>
+                                                                    {% if budget.value_consolidate_percentage %}
+                                                                        {{ budget.value_consolidate_percentage }} {% endif %}
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th colspan="2">
+                                                                    <hr>
+                                                                </th>
+                                                            </tr>
+                                                        {% endfor %}
+                                                        </tbody>
+                                                    </table>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="tab-pane" id="tab_proposed_candidates" role="tabpanel">
+                {% include 'vacancies/vacancy-proposal-candidates.html' %}
+            </div>
+            <div class="tab-pane" id="tab_file_manager" role="tabpanel">
+                {% include 'utils/file-manager-list.html' %}
+            </div>
+
+        </div>
+
+    </div>
+</div>

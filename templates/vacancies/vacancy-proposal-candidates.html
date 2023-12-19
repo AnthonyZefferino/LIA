@@ -1,0 +1,324 @@
+{% load static %}
+{% load i18n %}
+<div class="row" id="candidate-list">
+    <div class="col-xl-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-start mb-3">
+                    <div class="flex-grow-1">
+                        <span class="badge badge-soft-success">Full Time</span>
+                    </div>
+                    <button type="button" class="btn btn-light btn-sm like-btn active" data-bs-toggle="button">
+                        <i class="bx bx-heart"></i></button>
+                </div>
+                <div class="text-center mb-3">
+                    <img src="/static/images/users/avatar-1.jpg" alt=""
+                         class="avatar-sm rounded-circle"/>
+                    <h6 class="font-size-15 mt-3 mb-1">Steven Franklin</h6>
+                    <p class="mb-0 text-muted">UI/UX Designer</p>
+                </div>
+                <div class="d-flex mb-3 justify-content-center gap-2 text-muted">
+                    <div>
+                        <i class='bx bx-map align-middle text-primary'></i> Louisiana
+                    </div>
+                    <p class="mb-0 text-center"><i class='bx bx-money align-middle text-primary'></i>
+                        $38 / hrs</p>
+                </div>
+                <div class="hstack gap-2 justify-content-center">
+                    <span class="badge badge-soft-secondary">Bootstrap</span>
+                    <span class="badge badge-soft-secondary">HTML</span>
+                    <span class="badge badge-soft-secondary">CSS</span>
+                </div>
+
+                <div class="mt-4 pt-1">
+                    <a href="{% url 'job_candidates:job_candidate-details' pk=1 %}"
+                       class="btn btn-soft-primary d-block">View
+                        Profile</a>
+                </div>
+                <div class="mt-4 pt-1">
+                    <a href="{% url 'job_candidates:job_candidate-details' pk=1 %}"
+                       class="btn btn-soft-pink d-block">Propose for interview</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-start mb-3">
+                    <div class="flex-grow-1">
+                        <span class="badge badge-soft-info">Freelance</span>
+                    </div>
+                    <button type="button" class="btn btn-light btn-sm like-btn active" data-bs-toggle="button">
+                        <i class="bx bx-heart"></i></button>
+                </div>
+                <div class="text-center mb-3">
+                    <img src="/static/images/users/avatar-2.jpg" alt=""
+                         class="avatar-sm rounded-circle"/>
+                    <h6 class="font-size-15 mt-3 mb-1">Dolores Minter</h6>
+                    <p class="mb-0 text-muted">Assistant / Shope Keeper</p>
+                </div>
+                <div class="d-flex mb-3 justify-content-center gap-2 text-muted">
+                    <div>
+                        <i class='bx bx-map align-middle text-primary'></i> Hong-Kong
+                    </div>
+                    <p class="mb-0 text-center"><i class='bx bx-money align-middle text-primary'></i>
+                        $25 / hrs</p>
+                </div>
+                <div class="hstack gap-2 justify-content-center">
+                    <span class="badge badge-soft-secondary">Shope</span>
+                    <span class="badge badge-soft-secondary">Assistant</span>
+                </div>
+
+                <div class="mt-4 pt-1">
+                    <a href="#####" class="btn btn-soft-primary d-block">View
+                        Profile</a>
+                </div>
+                <div class="mt-4 pt-1">
+                    <a href="{% url 'job_candidates:job_candidate-details' pk=1 %}"
+                       class="btn btn-soft-pink d-block">Propose for interview</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-start mb-3">
+                    <div class="flex-grow-1">
+                        <span class="badge badge-soft-danger">Part Time</span>
+                    </div>
+                    <button type="button" class="btn btn-light btn-sm like-btn" data-bs-toggle="button">
+                        <i class="bx bx-heart"></i></button>
+                </div>
+                <div class="text-center mb-3">
+                    <img src="/static/images/users/avatar-3.jpg" alt=""
+                         class="avatar-sm rounded-circle"/>
+                    <h6 class="font-size-15 mt-3 mb-1">Charles Brown</h6>
+                    <p class="mb-0 text-muted">Web Designer</p>
+                </div>
+                <div class="d-flex mb-3 justify-content-center gap-2 text-muted">
+                    <div>
+                        <i class='bx bx-map align-middle text-primary'></i> Finlande
+                    </div>
+                    <p class="mb-0 text-center"><i class='bx bx-money align-middle text-primary'></i>
+                        $24 / hrs</p>
+                </div>
+                <div class="hstack gap-2 justify-content-center">
+                    <span class="badge badge-soft-secondary">Bootstrap</span>
+                    <span class="badge badge-soft-secondary">HTML</span>
+                    <span class="badge badge-soft-secondary">SASS</span>
+                </div>
+
+                <div class="mt-4 pt-1">
+                    <a href="#####" class="btn btn-soft-primary d-block">View
+                        Profile</a>
+                </div>
+                <div class="mt-4 pt-1">
+                    <a href="{% url 'job_candidates:job_candidate-details' pk=1 %}"
+                       class="btn btn-soft-pink d-block">Propose for interview</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-start mb-3">
+                    <div class="flex-grow-1">
+                        <span class="badge badge-soft-warning">Internship</span>
+                    </div>
+                    <button type="button" class="btn btn-light btn-sm like-btn" data-bs-toggle="button">
+                        <i class="bx bx-heart"></i></button>
+                </div>
+                <div class="text-center mb-3">
+                    <img src="/static/images/users/avatar-4.jpg" alt=""
+                         class="avatar-sm rounded-circle"/>
+                    <h6 class="font-size-15 mt-3 mb-1">Bonnie Harney</h6>
+                    <p class="mb-0 text-muted">Web Developer</p>
+                </div>
+                <div class="d-flex mb-3 justify-content-center gap-2 text-muted">
+                    <div>
+                        <i class='bx bx-map align-middle text-primary'></i> France
+                    </div>
+                    <p class="mb-0 text-center"><i class='bx bx-money align-middle text-primary'></i>
+                        $47 / hrs</p>
+                </div>
+                <div class="hstack gap-2 justify-content-center">
+                    <span class="badge badge-soft-secondary">MYSQL</span>
+                    <span class="badge badge-soft-secondary">PHP</span>
+                    <span class="badge badge-soft-secondary">Laravel</span>
+                </div>
+
+                <div class="mt-4 pt-1">
+                    <a href="#####" class="btn btn-soft-primary d-block">View
+                        Profile</a>
+                </div>
+                <div class="mt-4 pt-1">
+                    <a href="{% url 'job_candidates:job_candidate-details' pk=1 %}"
+                       class="btn btn-soft-pink d-block">Propose for interview</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-start mb-3">
+                    <div class="flex-grow-1">
+                        <span class="badge badge-soft-warning">Internship</span>
+                    </div>
+                    <button type="button" class="btn btn-light btn-sm like-btn active" data-bs-toggle="button">
+                        <i class="bx bx-heart"></i></button>
+                </div>
+                <div class="text-center mb-3">
+                    <img src="/static/images/users/avatar-5.jpg" alt=""
+                         class="avatar-sm rounded-circle"/>
+                    <h6 class="font-size-15 mt-3 mb-1">Stephen Hadley</h6>
+                    <p class="mb-0 text-muted">Graphic Designer</p>
+                </div>
+                <div class="d-flex mb-3 justify-content-center gap-2 text-muted">
+                    <div>
+                        <i class='bx bx-map align-middle text-primary'></i> Danemark
+                    </div>
+                    <p class="mb-0 text-center"><i class='bx bx-money align-middle text-primary'></i>
+                        $83 / hrs</p>
+                </div>
+                <div class="hstack gap-2 justify-content-center">
+                    <span class="badge badge-soft-secondary">Figma</span>
+                    <span class="badge badge-soft-secondary">Adobe XD</span>
+                    <span class="badge badge-soft-secondary">Sketch</span>
+                </div>
+
+                <div class="mt-4 pt-1">
+                    <a href="#####" class="btn btn-soft-primary d-block">View
+                        Profile</a>
+                </div>
+                <div class="mt-4 pt-1">
+                    <a href="{% url 'job_candidates:job_candidate-details' pk=1 %}"
+                       class="btn btn-soft-pink d-block">Propose for interview</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-start mb-3">
+                    <div class="flex-grow-1">
+                        <span class="badge badge-soft-warning">Internship</span>
+                    </div>
+                    <button type="button" class="btn btn-light btn-sm like-btn" data-bs-toggle="button">
+                        <i class="bx bx-heart"></i></button>
+                </div>
+                <div class="text-center mb-3">
+                    <img src="/static/images/users/avatar-6.jpg" alt=""
+                         class="avatar-sm rounded-circle"/>
+                    <h6 class="font-size-15 mt-3 mb-1">Henry Wells</h6>
+                    <p class="mb-0 text-muted">Executive, HR Operations</p>
+                </div>
+                <div class="d-flex mb-3 justify-content-center gap-2 text-muted">
+                    <div>
+                        <i class='bx bx-map align-middle text-primary'></i> Danemark
+                    </div>
+                    <p class="mb-0 text-center"><i class='bx bx-money align-middle text-primary'></i>
+                        $65 / hrs</p>
+                </div>
+                <div class="hstack gap-2 justify-content-center">
+                    <span class="badge badge-soft-secondary">HR</span>
+                    <span class="badge badge-soft-secondary">Executive</span>
+                    <span class="badge badge-soft-secondary">Professional</span>
+                </div>
+
+                <div class="mt-4 pt-1">
+                    <a href="#####" class="btn btn-soft-primary d-block">View
+                        Profile</a>
+                </div>
+                <div class="mt-4 pt-1">
+                    <a href="{% url 'job_candidates:job_candidate-details' pk=1 %}"
+                       class="btn btn-soft-pink d-block">Propose for interview</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-start mb-3">
+                    <div class="flex-grow-1">
+                        <span class="badge badge-soft-success">Full Time</span>
+                    </div>
+                    <button type="button" class="btn btn-light btn-sm like-btn" data-bs-toggle="button">
+                        <i class="bx bx-heart"></i></button>
+                </div>
+                <div class="text-center mb-3">
+                    <img src="/static/images/users/avatar-7.jpg" alt=""
+                         class="avatar-sm rounded-circle"/>
+                    <h6 class="font-size-15 mt-3 mb-1">Adam Miller</h6>
+                    <p class="mb-0 text-muted">Education Training</p>
+                </div>
+                <div class="d-flex mb-3 justify-content-center gap-2 text-muted">
+                    <div>
+                        <i class='bx bx-map align-middle text-primary'></i> Colombie
+                    </div>
+                    <p class="mb-0 text-center"><i class='bx bx-money align-middle text-primary'></i>
+                        $40 / hrs</p>
+                </div>
+                <div class="hstack gap-2 justify-content-center">
+                    <span class="badge badge-soft-secondary">Teaching</span>
+                    <span class="badge badge-soft-secondary">React</span>
+                    <span class="badge badge-soft-secondary">Training</span>
+                </div>
+
+                <div class="mt-4 pt-1">
+                    <a href="#####" class="btn btn-soft-primary d-block">View
+                        Profile</a>
+                </div>
+                <div class="mt-4 pt-1">
+                    <a href="{% url 'job_candidates:job_candidate-details' pk=1 %}"
+                       class="btn btn-soft-pink d-block">Propose for interview</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-start mb-3">
+                    <div class="flex-grow-1">
+                        <span class="badge badge-soft-info">Freelance</span>
+                    </div>
+                    <button type="button" class="btn btn-light btn-sm like-btn active" data-bs-toggle="button">
+                        <i class="bx bx-heart"></i></button>
+                </div>
+                <div class="text-center mb-3">
+                    <img src="/static/images/users/avatar-8.jpg" alt=""
+                         class="avatar-sm rounded-circle"/>
+                    <h6 class="font-size-15 mt-3 mb-1">Keith Gonzales</h6>
+                    <p class="mb-0 text-muted">Product Manager</p>
+                </div>
+                <div class="d-flex mb-3 justify-content-center gap-2 text-muted">
+                    <div>
+                        <i class='bx bx-map align-middle text-primary'></i> Brazil
+                    </div>
+                    <p class="mb-0 text-center"><i class='bx bx-money align-middle text-primary'></i>
+                        $50 / hrs</p>
+                </div>
+                <div class="hstack gap-2 justify-content-center">
+                    <span class="badge badge-soft-secondary">Manager</span>
+                    <span class="badge badge-soft-secondary">Business</span>
+                    <span class="badge badge-soft-secondary">Product</span>
+                </div>
+
+                <div class="mt-4 pt-1">
+                    <a href="#####" class="btn btn-soft-primary d-block">View
+                        Profile</a>
+                </div>
+                <div class="mt-4 pt-1">
+                    <a href="{% url 'job_candidates:job_candidate-details' pk=1 %}"
+                       class="btn btn-soft-pink d-block">Propose for interview</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

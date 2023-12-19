@@ -8,9 +8,9 @@
             <div id="sidebar-menu" class="mt-0 pt-0">
                 <!-- Left Menu Start -->
                 <ul class="metismenu list-unstyled" id="side-menu">
-{#                    <li class="menu-title m-0" key="t-components">#}
-{#                        <hr>#}
-{#                    </li>#}
+                    {#                    <li class="menu-title m-0" key="t-components">#}
+                    {#                        <hr>#}
+                    {#                    </li>#}
 
                     <li>
                         <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -18,47 +18,72 @@
                             <span key="t-projects">{% trans 'Company' %}</span>
                         </a>
                         <ul>
-
-                               <li>
-                                <a href="{% url 'aziende:company-list' industry='ENTI' %}" key="t-p-grid">ENTI</a>
-                            </li>
-                               <li>
-                                <a href="{% url 'aziende:company-list' industry='PARTNER' %}" key="t-p-grid">PARTNER</a>
-                            </li>
-                               <li>
-                                <a href="{% url 'aziende:company-list' industry='CLIENTI' %}" key="t-p-grid">CLIENTI</a>
-                            </li>
-                               <li>
-                                <a href="{% url 'aziende:company-list' industry='SOSTENITORI' %}" key="t-p-grid">SOSTENITORI</a>
-                            </li>
-                               <li>
-                                <a href="{% url 'aziende:company-list' industry='CONSULENTI DEL LAVORO' %}" key="t-p-grid">CONSULENTI DEL LAVORO</a>
+                            <li>
+                                <a href="{% url 'aziende:company-list' industry='ENTI' %}"
+                                   key="t-p-grid">{% trans 'Enti' %}</a>
                             </li>
                             <li>
-                                <a href="{% url 'aziende:company-list' industry='COOPERATIVE' %}" key="t-p-grid">COOPERATIVE</a>
+                                <a href="{% url 'aziende:company-list' industry='PARTNER' %}"
+                                   key="t-p-grid">{% trans 'Partner' %}</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'aziende:company-list' industry='CLIENTI' %}"
+                                   key="t-p-grid">{% trans 'Clienti' %}</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'aziende:company-list' industry='SOSTENITORI' %}"
+                                   key="t-p-grid">{% trans 'Sostenitori' %}</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'aziende:company-list' industry='CONSULENTI DEL LAVORO' %}"
+                                   key="t-p-grid">{% trans 'Consulenti Lavoro' %}</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'aziende:company-list' industry='COOPERATIVE' %}"
+                                   key="t-p-grid">{% trans 'Cooperative' %}</a>
                             </li>
                         </ul>
                     </li>
-                  <li>
+                    <li>
                         <a href="javascript: void(0);" class="has-arrow waves-effect">
                             <i class="bx bx-user-voice"></i>
                             <span key="t-projects">{% trans 'Vacancies' %}</span>
                         </a>
                         <ul>
-                               <li>
-                                <a href="{% url 'vacancies:vacancies-grid' %}" key="t-p-grid">Attive</a>
+                            <li>
+                                <a href="{% url 'vacancies:vacancies-grid' %}" key="t-p-grid">{% trans 'Active' %}</a>
                             </li>
-                             <li>
-                                <a href="{% url 'vacancies:vacancies-grid' %}" key="t-p-grid">Sempre Attive</a>
+                            <li>
+                                <a href="{% url 'vacancies:vacancies-grid' %}"
+                                   key="t-p-grid">{% trans 'Allway Active' %}</a>
                             </li>
-                               <li>
-                                <a href="{% url 'vacancies:vacancies-grid'%}" key="t-p-grid">Storico</a>
+                            <li>
+                                <a href="{% url 'vacancies:vacancies-grid' %}" key="t-p-grid">{% trans 'Closed' %}</a>
                             </li>
                         </ul>
                     </li>
 
                     <li class="menu-title" key="t-components">
                         <hr>
+                    </li>
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="bx bx-briefcase-alt-2"></i>
+                            <span key="t-projects">{% trans 'Projects' %}</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li>
+                                <a href="{% url 'lai_projects:lai_project-list' %}"
+                                   key="t-p-grid">Attivi</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'lai_projects:lai_project-list' %}" key="t-p-grid">{% trans 'Old' %}</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'lai_projects:lai_project-list' %}"
+                                   key="t-p-grid">{% trans 'Pending' %}</a>
+                            </li>
+                        </ul>
                     </li>
                     {#        <li>#}
                     {#          <a href="javascript: void(0);" class="has-arrow waves-effect">#}
@@ -257,7 +282,7 @@
                     <li>
                         <a href="javascript: void(0);" class="has-arrow waves-effect">
                             <i class="bx bx-briefcase-alt-2"></i>
-                            <span key="t-projects">Progetti</span>
+                            <span key="t-projects">___Progetti</span>
                         </a>
                         <ul class="sub-menu" aria-expanded="false">
                             <li>

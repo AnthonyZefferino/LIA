@@ -1,106 +1,176 @@
 {% extends 'partials/base.html' %}
-{% load i18n %}
 {% load static %}
+{% load i18n %}
 {% block extra_css %}
+
     <link href="{% static 'libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css' %}" rel="stylesheet"
           type="text/css">
-    <!-- DataTables -->
-    <link href="{% static 'libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css' %}" rel="stylesheet"
-          type="text/css"/>
-    <link href="{% static 'libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css' %}" rel="stylesheet"
-          type="text/css"/>
-    <link href="{% static '/custom_js_css/datatable.net-searchbuilding/searchBuilder.dataTables.min.css' %}"
-          rel="stylesheet"
-          type="text/css"/>
-    <link href="{% static '/custom_js_css/datatable.net-searchbuilding/dataTables.dateTime.min.css' %}" rel="stylesheet"
-          type="text/css"/>
-
 
 {% endblock %}
+
 {% block contents %}
-    <input type="hidden" id="input_company" value="{{ company }}">
     <div class="row">
         <div class="col-lg-12">
-            <div class="card">
-                <div class="card-body border-bottom">
-                    <div class="d-flex align-items-center">
-                        <h5 class="mb-0 card-title flex-grow-1">{% trans 'Project' %}</h5>
-                        <div class="flex-shrink-0">
-                            <a href="#!" class="btn btn-primary">Add New {% trans 'Project' %}</a>
-                            <a href="#!" class="btn btn-light"><i class="mdi mdi-refresh"></i></a>
+            <div class="card job-filter">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="dropdown float-end mt-3 me-3">
+                            <button class="btn  btn-outline-pink" type="button" id="button_offices"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bx bx-dots-vertical-rounded"></i>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="company_representative">
+                                <li><a class="dropdown-item"
+                                ><i
+                                        class="mdi text-primary mdi-plus-one"></i> {% trans 'Add' %} {% trans 'Project' %}
+                                </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
+                <div class="card-body p-3">
+                    <form action="javascript:void(0);">
+                        <div class="row g-3">
+                            <div class="col-xxl-2 col-lg-4">
+                                <div class="position-relative">
+                                    <input type="text" class="form-control" id="searchProject" autocomplete="off"
+                                           placeholder="Search Project">
+                                </div>
+                            </div>
+                            <div class="col-xxl-2 col-lg-4">
+                                <div class="position-relative">
+                                    <input type="text" class="form-control" id="searchLead" autocomplete="off"
+                                           placeholder="{% trans 'Lead' %}">
+                                </div>
+                            </div>  
+                             <div class="col-xxl-2 col-lg-4">
+                                <div class="position-relative">
+                                    <input type="text" class="form-control" id="searchStatus" autocomplete="off"
+                                           placeholder="{% trans 'Status' %}">
+                                </div>
+                            </div>  
+                            <div class="col-xxl-2 col-lg-6">
+                                <div class="position-relative">
+                                    <div id="datepicker1">
+                                        <input type="text" class="form-control" placeholder="Start date"
+                                               data-date-format="dd M, yyyy" data-date-container='#datepicker1'
+                                               data-date-autoclose="true" data-provide="datepicker">
+                                    </div><!-- input-group -->
+                                </div>
+                            </div>
+                            <div class="col-xxl-2 col-lg-6">
+                                <div class="position-relative">
+                                    <div id="datepicker1">
+                                        <input type="text" class="form-control" placeholder="End date"
+                                               data-date-format="dd M, yyyy" data-date-container='#datepicker1'
+                                               data-date-autoclose="true" data-provide="datepicker">
+                                    </div><!-- input-group -->
+                                </div>
+                            </div>
+                            <!--end col-->
 
-                <div class="card-body">
-                    <table class="table align-middle  w-100 table-check table-hover table-condensed table-striped"
-                           id="company-table"
-                           data-detail-url="{% url 'aziende:company-detail' pk=0 %}"
-                           data-edit-url="{% url 'aziende:company-edit' pk=0 %}">
-                        <thead>
-                        <tr>
-                            <th>{% trans "Project Title" %}</th>
-                            <th>{% trans 'Supporting Entity' %}</th>
-                            <th>{% trans "Project Type" %}</th>
-                            <th>{% trans "Description" %}</th>
-                            <th>{% trans "Lead Partner" %}</th>
-                            <!--  Altri campi -->
-                            <th>{% trans 'Actions' %}</th>
-                        </tr>
-                        </thead>
-                    </table>
+                            <div class="col-xxl-2 col-lg-6">
+                                <div class="position-relative h-100 hstack gap-3">
+                                    <button type="submit" class="btn btn-primary h-100 w-100"><i
+                                            class="bx bx-search-alt align-middle"></i>{% trans 'Find Project' %}
+                                    </button> 
+                                </div>
+                            </div>  
+                        </div>
+                        <!--end row-->
+                    </form>
                 </div>
             </div>
         </div>
+        <!--end col-->
     </div>
+    <!--end row-->
+
+    <div class="row" id="projectgrid-list">
+    </div><!--end row-->
+
+    <div class="row mb-3">
+        <div class="col-lg-12">
+            <div class="d-flex justify-content-center">
+                <nav aria-label="Page navigation example" id="pagination-element" class="mb-0">
+                    <div class="pagination-block pagination pagination-rounded">
+                        <a href="#" class="page-link outline-none" id="page-prev"><i
+                                class='bx bx-chevron-left align-middle'></i></a>
+                        <span id="page-num" class="outline-none pagination"></span>
+                        <a href="#" class="page-link outline-none" id="page-next"><i
+                                class='bx bx-chevron-right align-middle'></i></a>
+                    </div>
+                </nav>
+            </div>
+        </div><!--end col-->
+    </div><!--end row-->
+
 {% endblock %}
 
 {% block extra_content %}
+
     <!-- Modal -->
-    <div class="modal fade" id="CompanyDelete" tabindex="-1" aria-labelledby="jobDeleteLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal fade" id="applyJobs" tabindex="-1" aria-labelledby="applyJobsLabel" aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="alert alert-warning text-center bg-warning-subtle">
-                        Cancellazione <strong id="company-to-delete-name"></strong>
-                    </h4>
+                    <h5 class="modal-title" id="applyJobsLabel">Apply For This Job</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body px-4 py-5 text-center">
-                    <button type="button" class="btn-close position-absolute end-0 top-0 m-3" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                    <div class="avatar-sm mb-4 mx-auto">
-                        <div class="avatar-title bg-primary text-primary bg-opacity-10 font-size-20 rounded-3">
-                            <i class="mdi mdi-trash-can-outline"></i>
+                <div class="modal-body">
+                    <form action="#!">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="mb-3">
+                                    <label for="fullnameInput" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="fullnameInput"
+                                           placeholder="Enter your name">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label for="emailInput" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="emailInput"
+                                           placeholder="Enter your email">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label for="phoneNumberInput" class="form-label">Phone Number</label>
+                                    <input type="email" class="form-control" id="phoneNumberInput"
+                                           placeholder="Enter your number">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="mb-3">
+                                    <label for="uploadResume" class="form-label">Upload Resume</label>
+                                    <input type="file" class="form-control" id="uploadResume"
+                                           placeholder="Upload resume">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="mb-4">
+                                    <label for="messageInput" class="form-label">Message</label>
+                                    <textarea class="form-control" id="messageInput" rows="3"
+                                              placeholder="Enter your message"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="text-end">
+                                    <button class="btn btn-success">Send Application <i
+                                            class="bx bx-send align-middle"></i></button>
+                                    <button class="btn btn-outline-secondary">Cancel</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <p class="text-muted font-size-16 mb-4">{% trans 'Are you sure you want to permanently erase the Company?' %}
-                    </p>
-
-                    <div class="hstack gap-2 justify-content-center mb-0">
-                        <button type="button" class="btn btn-danger">{% trans 'Delete Now' %}</button>
-                        <button type="button" class="btn btn-secondary"
-                                data-bs-dismiss="modal">{% trans 'Close' %}</button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 {% endblock %}
 {% block extra_javascript %}
-    <script src="{% static 'libs/datatables.net/js/jquery.dataTables.min.js' %}"></script>
-    <script src="{% static 'libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
-    <!-- Buttons examples -->
-    <script src="{% static 'libs/datatables.net-buttons/js/dataTables.buttons.min.js' %}"></script>
-    <script src="{% static 'libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js' %}"></script>
-    <script src="{% static 'libs/jszip/dist/jszip.min.js' %}"></script>
-    <script src="{% static 'libs/pdfmake/build/pdfmake.min.js' %}"></script>
-    <script src="{% static 'libs/pdfmake/build/vfs_fonts.js' %}"></script>
-    <script src="{% static 'libs/datatables.net-buttons/js/buttons.html5.min.js' %}"></script>
-    <script src="{% static 'libs/datatables.net-buttons/js/buttons.print.min.js' %}"></script>
-    <script src="{% static 'libs/datatables.net-buttons/js/buttons.colVis.min.js' %}"></script>
-    <script src="{% static '/custom_js_css/datatable.net-searchbuilding/dataTables.searchBuilder.min.js' %}"></script>
-    <script src="{% static '/custom_js_css/datatable.net-searchbuilding/dataTables.dateTime.min.js' %}"></script>
+    <script src="{% static 'libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js' %}"></script>
     <script src="{% static 'js/lia_projects/project-list.init.js' %}"></script>
 {% endblock %}
-
-

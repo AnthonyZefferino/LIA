@@ -40,6 +40,7 @@ class ActivityInline(admin.StackedInline):
 
 
 class CompanyRepresentativeInline(admin.TabularInline):
+    save_as = True
     model = CompanyRepresentative
     extra = 0  # Numero di forme vuote da visualizzare
 
@@ -64,6 +65,7 @@ class CompanyRepresentativeInline(admin.TabularInline):
 
 @admin.register(CompanyRepresentative)
 class CompanyRepresentativeAdmin(admin.ModelAdmin):
+    save_as = True
     list_display = (
         'full_name',
         'address',
@@ -89,9 +91,9 @@ class CompanyRepresentativeAdmin(admin.ModelAdmin):
 
 @admin.register(Company)
 class CompanyAdmin(admin.ModelAdmin):
+    save_as = True
     list_display = (
         'name',
-        'description',
         'macro_switch',
         'industry',
         'sector',

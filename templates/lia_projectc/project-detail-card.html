@@ -1,0 +1,59 @@
+{% load i18n %}
+{% load static %}
+<div class="card">
+    <div class="card-body border-bottom">
+        <div class="d-flex">
+            <img src="{% static 'images/companies/wechat.svg' %}" alt="" height="50">
+            <div class="flex-grow-1 ms-3">
+                <h5 class="fw-semibold">{{ project.project_title }}</h5>
+                <ul class="list-unstyled hstack gap-2 mb-0">
+                    <li>
+                        <span class="text-muted">{{ project.company }}</span>
+                    </li>
+                    <li>
+                        <i class="bx bx-map"></i> <span
+                            class="text-muted">{{ project.amount }} €</span>
+                    </li>
+                </ul>
+                <div class="card-body">
+                    <p class="text-muted">{{ description }}</p>
+                    {% for Description in descriptions %}
+                        <p>{{ Description }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        {% for group, group_values in grouped_custom_field_values.items %}
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-4">{{ group }}</h4></div>
+                    <div class="card-body">
+                        <div class="row">
+                            {% for custom_field in group_values %}
+                                <div class="col-7 border-bottom pb-2" ><strong>{{ custom_field.label }}
+                                    {% if custom_field.required_custom_value %}
+                                        (required)
+                                    {% endif %}
+                                </strong></div>
+                                <div class="col-5 border-bottom pb-2">
+                                    <ul class="list-unstyled hstack gap-2 mb-0">
+                                        {% for value in custom_field.value %}
+                                            <li>
+                                                {{ value }}
+
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+

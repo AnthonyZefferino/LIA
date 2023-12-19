@@ -2,9 +2,17 @@ body[data-sidebar=colored] .vertical-menu {
     background-color: #990055;
 }
 
-#page-topbar > div > div:nth-child(1) > div.navbar-brand-box{
+#page-topbar > div > div:nth-child(1) > div.navbar-brand-box {
     background-color: #990055;
 }
+
 /*#layout-wrapper > div.main-content > footer{*/
 /*    background-color: #990055;*/
 /*}*/
+
+.nav-tabs-custom .nav-item .nav-link.active {
+    color: #990055;
+     border-bottom: 1px #990055 solid;
+
+}
+

@@ -1,0 +1,271 @@
+{% load static %}
+{% load i18n %}
+<div class="mt-4">
+    <div class="d-flex flex-wrap">
+        <h5 class="font-size-16 me-3">Recent Files</h5>
+
+        <div class="ms-auto">
+            <a href="javascript: void(0);" class="fw-medium text-reset">View All</a>
+        </div>
+    </div>
+    <hr class="mt-2">
+
+    <div class="table-responsive">
+        <table class="table align-middle table-nowrap table-hover mb-0">
+            <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Date modified</th>
+                <th scope="col" colspan="2">Size</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><a href="javascript: void(0);" class="text-dark fw-medium"><i
+                        class="mdi mdi-file-document font-size-16 align-middle text-primary me-2"></i> {% url 'dashboard' %}
+                </a></td>
+                <td>12-10-2020, 09:45</td>
+                <td>09 KB</td>
+                <td>
+                    <div class="dropdown">
+                        <a class="font-size-16 text-muted" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
+                            <i class="mdi mdi-dots-horizontal"></i>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="#">Open</a>
+                            <a class="dropdown-item" href="#">Edit</a>
+                            <a class="dropdown-item" href="#">Rename</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Remove</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><a href="javascript: void(0);" class="text-dark fw-medium"><i
+                        class="mdi mdi-folder-zip font-size-16 align-middle text-warning me-2"></i> Project-A.zip</a>
+                </td>
+                <td>11-10-2020, 17:05</td>
+                <td>115 KB</td>
+                <td>
+                    <div class="dropdown">
+                        <a class="font-size-16 text-muted" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
+                            <i class="mdi mdi-dots-horizontal"></i>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="#">Open</a>
+                            <a class="dropdown-item" href="#">Edit</a>
+                            <a class="dropdown-item" href="#">Rename</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Remove</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><a href="javascript: void(0);" class="text-dark fw-medium"><i
+                        class="mdi mdi-image font-size-16 align-middle text-muted me-2"></i> Img-1.jpeg</a></td>
+                <td>11-10-2020, 13:26</td>
+                <td>86 KB</td>
+                <td>
+                    <div class="dropdown">
+                        <a class="font-size-16 text-muted" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
+                            <i class="mdi mdi-dots-horizontal"></i>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="#">Open</a>
+                            <a class="dropdown-item" href="#">Edit</a>
+                            <a class="dropdown-item" href="#">Rename</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Remove</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><a href="javascript: void(0);" class="text-dark fw-medium"><i
+                        class="mdi mdi-text-box font-size-16 align-middle text-muted me-2"></i> update list.txt</a></td>
+                <td>10-10-2020, 11:32</td>
+                <td>08 KB</td>
+                <td>
+                    <div class="dropdown">
+                        <a class="font-size-16 text-muted" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
+                            <i class="mdi mdi-dots-horizontal"></i>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="#">Open</a>
+                            <a class="dropdown-item" href="#">Edit</a>
+                            <a class="dropdown-item" href="#">Rename</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Remove</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><a href="javascript: void(0);" class="text-dark fw-medium"><i
+                        class="mdi mdi-folder font-size-16 align-middle text-warning me-2"></i> Project B</a></td>
+                <td>10-10-2020, 10:51</td>
+                <td>72 KB</td>
+                <td>
+                    <div class="dropdown">
+                        <a class="font-size-16 text-muted" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
+                            <i class="mdi mdi-dots-horizontal"></i>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="#">Open</a>
+                            <a class="dropdown-item" href="#">Edit</a>
+                            <a class="dropdown-item" href="#">Rename</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Remove</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><a href="javascript: void(0);" class="text-dark fw-medium"><i
+                        class="mdi mdi-text-box font-size-16 align-middle text-muted me-2"></i> Changes list.txt</a>
+                </td>
+                <td>09-10-2020, 17:05</td>
+                <td>07 KB</td>
+                <td>
+                    <div class="dropdown">
+                        <a class="font-size-16 text-muted" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
+                            <i class="mdi mdi-dots-horizontal"></i>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="#">Open</a>
+                            <a class="dropdown-item" href="#">Edit</a>
+                            <a class="dropdown-item" href="#">Rename</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Remove</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><a href="javascript: void(0);" class="text-dark fw-medium"><i
+                        class="mdi mdi-image font-size-16 align-middle text-success me-2"></i> Img-2.png</a></td>
+                <td>09-10-2020, 15:12</td>
+                <td>31 KB</td>
+                <td>
+                    <div class="dropdown">
+                        <a class="font-size-16 text-muted" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
+                            <i class="mdi mdi-dots-horizontal"></i>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="#">Open</a>
+                            <a class="dropdown-item" href="#">Edit</a>
+                            <a class="dropdown-item" href="#">Rename</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Remove</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><a href="javascript: void(0);" class="text-dark fw-medium"><i
+                        class="mdi mdi-folder font-size-16 align-middle text-warning me-2"></i> Project C</a></td>
+                <td>09-10-2020, 10:11</td>
+                <td>20 KB</td>
+                <td>
+                    <div class="dropdown">
+                        <a class="font-size-16 text-muted" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
+                            <i class="mdi mdi-dots-horizontal"></i>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="#">Open</a>
+                            <a class="dropdown-item" href="#">Edit</a>
+                            <a class="dropdown-item" href="#">Rename</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Remove</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><a href="javascript: void(0);" class="text-dark fw-medium"><i
+                        class="bx bxs-file font-size-16 align-middle text-primary me-2"></i> starter-page.html</a></td>
+                <td>08-10-2020, 03:22</td>
+                <td>11 KB</td>
+                <td>
+                    <div class="dropdown">
+                        <a class="font-size-16 text-muted" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
+                            <i class="mdi mdi-dots-horizontal"></i>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="#">Open</a>
+                            <a class="dropdown-item" href="#">Edit</a>
+                            <a class="dropdown-item" href="#">Rename</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Remove</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <hr>
+    <div class="card">
+        <div class="card-body">  
+            <div>
+                <div class="dropzone">
+                    <div class="fallback">
+                        <input name="file" type="file" multiple="multiple">
+                    </div>
+                    <div class="dz-message needsclick">
+                        <div class="mb-3">
+                            <i class="display-4 text-muted bx bxs-cloud-upload"></i>
+                        </div>
+
+                        <h4>Drop files qui per upload</h4>
+                    </div>
+                </div>
+
+                <ul class="list-unstyled mb-0" id="dropzone-preview">
+                    <li class="mt-2" id="dropzone-preview-list">
+                        <!-- This is used as the file preview template -->
+                        <div class="border rounded">
+                            <div class="d-flex p-2">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="avatar-sm bg-light rounded">
+                                        <img data-dz-thumbnail class="img-fluid rounded d-block"
+                                             src="https://img.themesbrand.com/judia/new-document.png"
+                                             alt="Dropzone-Image">
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <div class="pt-1">
+                                        <h5 class="fs-md mb-1" data-dz-name>&nbsp;</h5>
+                                        <p class="fs-sm text-muted mb-0" data-dz-size></p>
+                                        <strong class="error text-danger" data-dz-errormessage></strong>
+                                    </div>
+                                </div>
+                                <div class="flex-shrink-0 ms-3">
+                                    <button data-dz-remove class="btn btn-sm btn-danger">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="button" class="btn btn-primary waves-effect waves-light">Send Files</button>
+            </div>
+        </div>
+    </div>
+
+</div>

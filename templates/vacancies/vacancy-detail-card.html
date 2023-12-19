@@ -1,0 +1,68 @@
+{% load i18n %}
+{% load static %}  
+<div class="card">
+                    <div class="card-body border-bottom">
+                        <div class="d-flex">
+                            <img src="{% static 'images/companies/wechat.svg' %}" alt="" height="50">
+                            <div class="flex-grow-1 ms-3">
+                                <h5 class="fw-semibold">{{ vacancy.insertion_title }}</h5>
+                                <ul class="list-unstyled hstack gap-2 mb-0">
+                                    <li>
+                                        <i class="bx bx-building-house"></i> <span
+                                            class="text-muted">{{ vacancy.company }}</span>
+                                    </li>
+                                    <li>
+                                        <i class="bx bx-map"></i> <span
+                                            class="text-muted">{{ vacancy.location_vacancies }}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="fw-semibold mb-3">{% trans 'Description' %}:</h5>
+                        <p class="text-muted">{{ vacancy.description }}</p>
+
+                        <h5 class="fw-semibold mb-3">{% trans 'Responsibilities' %}:</h5>
+                        <ul class="vstack gap-3">
+                            {% for responsibility in responsibilities %}
+                                <li>{{ responsibility }}</li>
+                            {% endfor %}
+                        </ul>
+
+                        {% for group, group_values in grouped_custom_field_values.items %}
+                            <h5 class="fw-semibold mb-3">{{ group }}</h5>
+                            <ul class="vstack gap-3">
+                                {% for custom_field_value in group_values %}
+                                    {% for value in custom_field_value %}
+                                        <li>
+                                            {{ value }}
+                                            {% if custom_field_value.required_custom_value %}
+                                                (required)
+                                            {% endif %}
+                                        </li>
+                                    {% endfor %}
+                                {% endfor %}
+                            </ul>
+                        {% endfor %} 
+                        <div class="mt-4">
+                            <ul class="list-inline mb-0">
+                                <li class="list-inline-item mt-1">
+                                    Share this job:
+                                </li>
+                                <li class="list-inline-item mt-1">
+                                    <a href="javascript:void(0)" class="btn btn-outline-primary btn-hover"><i
+                                            class="uil uil-facebook-f"></i> Indeed</a>
+                                </li>
+                                <li class="list-inline-item mt-1">
+                                    <a href="javascript:void(0)" class="btn btn-outline-danger btn-hover"><i
+                                            class="uil uil-google"></i> Linkedin</a>
+                                </li>
+                                <li class="list-inline-item mt-1">
+                                    <a href="javascript:void(0)" class="btn btn-outline-pink btn-hover"><i
+                                            class="uil uil-linkedin-alt"></i> Sito Lavoriamoci</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>

@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from django.conf import settings
+
 
 
 class Industry(models.Model):
@@ -121,8 +121,8 @@ class Company(models.Model):
 
 
 class FileType(models.Model):
-    tipo = models.CharField(_("Type"), max_length=50, unique=True)  # Traduci "Type"
-    descrizione = models.TextField(_("Description"), blank=True)  # Traduci "Description"
+    type_file = models.CharField(_("Type"), max_length=50, unique=True)  # Traduci "Type"
+    description = models.TextField(_("Description"), blank=True)  # Traduci "Description"
 
     def __str__(self):
         return self.tipo
@@ -133,6 +133,10 @@ class FileType(models.Model):
 
 
 class CompanyFile(models.Model):
+
+    def company_file_upload_to(instance, filename):
+        return f'files_aziende/{instance.company.id}/{filename}'
+
     company = models.ForeignKey(
         Company,
         on_delete=models.CASCADE,
@@ -147,12 +151,12 @@ class CompanyFile(models.Model):
         related_name='company_files',
         verbose_name=_("File Type")
     )
-    file = models.FileField(_("File"), upload_to='files_aziende/')
-    descrizione = models.CharField(_("Description"), max_length=255, blank=True)
+    file = models.FileField(_("File"), upload_to=company_file_upload_to)
+    description = models.CharField(_("Description"), max_length=255, blank=True)
     timestamp = models.DateTimeField(_("Timestamp"), auto_now_add=True)
 
     def __str__(self):
-        return self.descrizione or self.file.name
+        return self.description or self.file.name
 
     class Meta:
         verbose_name = _("Company File")
@@ -176,15 +180,12 @@ class Office(models.Model):
     mobile = models.CharField(_("Mobile"), max_length=20, null=True, blank=True)
     email = models.EmailField(_("Email"), blank=True, null=True)
     fax = models.CharField(_("Fax"), max_length=20, null=True, blank=True)
-    country = models.ForeignKey(Country, on_delete=models.CASCADE, verbose_name=_("Country"))
+    country = models.ForeignKey(Country, on_delete=models.CASCADE, verbose_name=_("Country"), default=1)
     municipality_province = models.ForeignKey(MunicipalityProvince, on_delete=models.CASCADE,
-                                              verbose_name=_("Municipality Province")) 
+                                              verbose_name=_("Municipality Province"), default=7292)
+    postal_code = models.CharField(_("Postal Code"), max_length=5, blank=True, null=True)
     created_at = models.DateTimeField(_("Created At"), auto_now_add=True)
     updated_at = models.DateTimeField(_("Updated At"), auto_now=True)
-
-
-
-
 
     class Meta:
         verbose_name = _('office')
@@ -228,9 +229,10 @@ class CompanyRepresentative(models.Model):
     role = models.ForeignKey(Role, on_delete=models.SET_NULL, null=True, verbose_name=_("Role"))
     date_of_birth = models.DateField(_("Date of Birth"))
     newsletter_subscription = models.BooleanField(_("Newsletter Subscription"), default=False)
-    country = models.ForeignKey(Country, on_delete=models.CASCADE, verbose_name=_("Country"))
+    country = models.ForeignKey(Country, on_delete=models.CASCADE, verbose_name=_("Country"), default=1)
     municipality_province = models.ForeignKey(MunicipalityProvince, on_delete=models.CASCADE,
-                                              verbose_name=_("Municipality Province"))
+                                              verbose_name=_("Municipality Province"), default=7292)
+    postal_code = models.CharField(_("Postal Code"), max_length=5, blank=True, null=True)
     STATUS_CHOICES = [
         ('Attiva', _('Attiva')),
         ('Sospesa', _('Sospesa')),
@@ -286,11 +288,11 @@ class Activity(models.Model):
     date = models.DateTimeField(_("Date"))
     alert = models.BooleanField(_("Alert"), default=False)
     visible_to_all = models.BooleanField(_("Visible to All"), default=False)
-    activity_user = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
-        verbose_name=_("Activity User")
-    )
+    # activity_user = models.ForeignKey(
+    #     settings.AUTH_USER_MODEL,
+    #     on_delete=models.CASCADE,
+    #     verbose_name=_("Activity User")
+    # )
     activity_type = models.ForeignKey(
         ActivityType,
         on_delete=models.CASCADE,

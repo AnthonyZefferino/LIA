@@ -1,0 +1,28 @@
+<div class="accordion" id="accordionUtils">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button fw-medium" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Histories
+            </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+             data-bs-parent="#accordionUtils">
+            <div class="accordion-body">
+                {% for record, delta in history %}
+                    <strong class="text-body-emphasis"> Modificato da: {{ record.history_user }}</strong><br>
+                    Data della modifica: {{ record.history_date }}
+                    {% if delta %}
+                        {% for change in delta.changes %}
+                            <div class="text-muted"> Il campo {{ change.field }} è cambiato da {{ change.old }}
+                                a {{ change.new }}.
+                            </div>
+                        {% endfor %}
+                        <hr>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,6 +1,9 @@
 {% extends 'partials/base.html' %}
 {% load i18n %}
 {% load static %}
+{% block extra_css %}
+    <link href="{% static 'libs/dropzone/dist/dropzone.css' %}" rel="stylesheet" type="text/css"/>
+{% endblock %}
 {% block contents %}
     <div class="row">
         <div class="col-xl-3">
@@ -75,124 +78,126 @@
 {% endblock %}
 
 {% block extra_javascript %}
-    {##}
+    <script src="{% static 'libs/dropzone/dist/dropzone-min.js' %}"></script>
+    <script src="{% static 'js/pages/form-file-upload.init.js' %}"></script>
     <script src="{% static 'libs/apexcharts/dist/apexcharts.min.js' %}"></script>
-    <script  >
-    // Mixed chart
-// get colors array from the string
-function getChartColorsArray(chartId) {
-    if (document.getElementById(chartId) !== null) {
-        var colors = document.getElementById(chartId).getAttribute("data-colors");
-        if (colors) {
-            colors = JSON.parse(colors);
-            return colors.map(function (value) {
-                var newValue = value.replace(" ", "");
-                if (newValue.indexOf(",") === -1) {
-                    var color = getComputedStyle(document.documentElement).getPropertyValue(
-                        newValue
-                    );
-                    if (color) return color;
-                    else return newValue;
+    <script>
+        // Mixed chart
+        // get colors array from the string
+        function getChartColorsArray(chartId) {
+            if (document.getElementById(chartId) !== null) {
+                var colors = document.getElementById(chartId).getAttribute("data-colors");
+                if (colors) {
+                    colors = JSON.parse(colors);
+                    return colors.map(function (value) {
+                        var newValue = value.replace(" ", "");
+                        if (newValue.indexOf(",") === -1) {
+                            var color = getComputedStyle(document.documentElement).getPropertyValue(
+                                newValue
+                            );
+                            if (color) return color;
+                            else return newValue;
+                        } else {
+                            var val = value.split(",");
+                            if (val.length == 2) {
+                                var rgbaColor = getComputedStyle(
+                                    document.documentElement
+                                ).getPropertyValue(val[0]);
+                                rgbaColor = "rgba(" + rgbaColor + "," + val[1] + ")";
+                                return rgbaColor;
+                            } else {
+                                return newValue;
+                            }
+                        }
+                    });
                 } else {
-                    var val = value.split(",");
-                    if (val.length == 2) {
-                        var rgbaColor = getComputedStyle(
-                            document.documentElement
-                        ).getPropertyValue(val[0]);
-                        rgbaColor = "rgba(" + rgbaColor + "," + val[1] + ")";
-                        return rgbaColor;
-                    } else {
-                        return newValue;
-                    }
-                }
-            });
-        } else {
-            console.warn('data-colors Attribute not found on:', chartId);
-        }
-    }
-}
-var mixedChartColors = getChartColorsArray("mixed_chart");
-if (mixedChartColors) {
-    var options = {
-        chart: {
-            height: 350,
-            type: 'line',
-            stacked: false,
-            toolbar: {
-                show: false
-            }
-        },
-        stroke: {
-            width: [0, 2, 4],
-            curve: 'smooth'
-        },
-        plotOptions: {
-            bar: {
-                columnWidth: '50%'
-            }
-        },
-        colors: mixedChartColors,
-        series: [{
-            name: 'Vacancies',
-            type: 'column',
-            data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30]
-        }, {
-            name: 'Colloqui',
-            type: 'area',
-            data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43]
-        }, {
-            name: 'Assunzioni',
-            type: 'line',
-            data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39]
-        }],
-        fill: {
-            opacity: [0.85, 0.25, 1],
-            gradient: {
-                inverseColors: false,
-                shade: 'light',
-                type: "vertical",
-                opacityFrom: 0.85,
-                opacityTo: 0.55,
-                stops: [0, 100, 100, 100]
-            }
-        },
-        labels: ['01/01/2023', '02/01/2023', '03/01/2023', '04/01/2023', '05/01/2023', '06/01/2023', '07/01/2023', '08/01/2023', '09/01/2023', '10/01/2023', '11/01/2023'],
-        markers: {
-            size: 0
-        },
-        xaxis: {
-            type: 'datetime'
-        },
-        yaxis: {
-            title: {
-                text: 'Points',
-            },
-        },
-        tooltip: {
-            shared: true,
-            intersect: false,
-            y: {
-                formatter: function (y) {
-                    if (typeof y !== "undefined") {
-                        return y.toFixed(0) + " points";
-                    }
-                    return y;
-
+                    console.warn('data-colors Attribute not found on:', chartId);
                 }
             }
-        },
-        grid: {
-            borderColor: '#f1f1f1'
         }
-    }
 
-    var chart = new ApexCharts(
-        document.querySelector("#mixed_chart"),
-        options
-    );
+        var mixedChartColors = getChartColorsArray("mixed_chart");
+        if (mixedChartColors) {
+            var options = {
+                chart: {
+                    height: 350,
+                    type: 'line',
+                    stacked: false,
+                    toolbar: {
+                        show: false
+                    }
+                },
+                stroke: {
+                    width: [0, 2, 4],
+                    curve: 'smooth'
+                },
+                plotOptions: {
+                    bar: {
+                        columnWidth: '50%'
+                    }
+                },
+                colors: mixedChartColors,
+                series: [{
+                    name: 'Vacancies',
+                    type: 'column',
+                    data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30]
+                }, {
+                    name: 'Colloqui',
+                    type: 'area',
+                    data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43]
+                }, {
+                    name: 'Assunzioni',
+                    type: 'line',
+                    data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39]
+                }],
+                fill: {
+                    opacity: [0.85, 0.25, 1],
+                    gradient: {
+                        inverseColors: false,
+                        shade: 'light',
+                        type: "vertical",
+                        opacityFrom: 0.85,
+                        opacityTo: 0.55,
+                        stops: [0, 100, 100, 100]
+                    }
+                },
+                labels: ['01/01/2023', '02/01/2023', '03/01/2023', '04/01/2023', '05/01/2023', '06/01/2023', '07/01/2023', '08/01/2023', '09/01/2023', '10/01/2023', '11/01/2023'],
+                markers: {
+                    size: 0
+                },
+                xaxis: {
+                    type: 'datetime'
+                },
+                yaxis: {
+                    title: {
+                        text: 'Points',
+                    },
+                },
+                tooltip: {
+                    shared: true,
+                    intersect: false,
+                    y: {
+                        formatter: function (y) {
+                            if (typeof y !== "undefined") {
+                                return y.toFixed(0) + " points";
+                            }
+                            return y;
 
-    chart.render();
-}
+                        }
+                    }
+                },
+                grid: {
+                    borderColor: '#f1f1f1'
+                }
+            }
+
+            var chart = new ApexCharts(
+                document.querySelector("#mixed_chart"),
+                options
+            );
+
+            chart.render();
+        }
 
     </script>
 

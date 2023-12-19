@@ -4,7 +4,7 @@ from .models import CustomFieldChoice, CustomFieldGroup, CustomField
 
 class CustomFieldChoiceInline(admin.TabularInline):
     model = CustomFieldChoice
-    extra = 1
+    extra = 0
 
 
 @admin.register(CustomFieldGroup)
@@ -15,5 +15,4 @@ class CustomFieldGroupAdmin(admin.ModelAdmin):
 @admin.register(CustomField)
 class CustomFieldAdmin(admin.ModelAdmin):
     list_display = ['name', 'field_type', 'group', 'default_value']
-    inlines = [CustomFieldChoiceInline]
     list_filter = ['group']

@@ -4,11 +4,14 @@ from django.views import View
 from django.views.generic import DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Candidate
+from django.utils import translation
 
 def index(request):
     return HttpResponse("Hello, world. You're at the job candidates index.")
 class JobsCandidatesListView(LoginRequiredMixin, View):
     def get(self, request):
+        user_language = 'it'  # Codice della lingua italiana
+        translation.activate(user_language)
         greeting = {}
         greeting['heading'] = "Candidate List"
         greeting['pageview'] = "Candidates"
@@ -21,7 +24,9 @@ class JobsCandidatesView(LoginRequiredMixin, DetailView):
     context_object_name = 'vacancies'
 
     def get_context_data(self, **kwargs):
+        user_language = 'it'  # Codice della lingua italiana
+        translation.activate(user_language)
         context = super().get_context_data(**kwargs)
-        context['heading'] = 'candidates'
-        context['pageview'] = 'candidate detail'
+        context['heading'] = 'Candidati'
+        context['pageview'] = 'Candidato dettagli'
         return context

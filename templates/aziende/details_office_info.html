@@ -1,6 +1,6 @@
 {% load i18n %}
 {% load static %}
-
+{% load function_render %}
 <div class="card">
     <div class="card-body">
         <div class="text-center">
@@ -17,55 +17,28 @@
                 <div class="d-flex">
                     <div class="ms-3">
                         <h6 class="fs-14 mb-2">{% trans 'is_legal' %}</h6>
-                        <p class="text-muted fs-14 mb-0">{{ office.is_legal }}</p>
                     </div>
-                </div>
-            </li>
-            <li>
-                <div class="d-flex">
                     <div class="ms-3">
-                        <h6 class="fs-14 mb-2">{% trans 'is_operative' %}</h6>
-                        <p class="text-muted fs-14 mb-0">{{ office.is_operative }}</p>
+                        <p class="text-muted fs-14 mb-0">{% render_boolean office.is_legal %}</p>
+                    </div>
+                    <div class="d-flex">
+                        <div class="ms-3">
+                            <h6 class="fs-14 mb-2">{% trans 'is_operative' %}</h6>
+                        </div>
+                        <div class="ms-3">
+                            <p class="text-muted fs-14 mb-0 ">{% render_boolean office.is_operative %}</p>
+                        </div>
                     </div>
                 </div>
             </li>
-
             {% if office.address %}
                 <li>
                     <div class="d-flex">
-                        <div class="ms-3">
-                            <h6 class="fs-14 mb-2">{% trans 'address' %}</h6>
-                            <p class="text-muted fs-14 mb-0">{{ office.address }} {{ office.civic_number }} {{ office.municipality_province }} {{ office.country }}</p>
-                        </div>
-                    </div>
-                </li>
-            {% endif %}
-            {% if office.phone %}
-                <li>
-                    <div class="d-flex">
-                        <div class="ms-3">
-                            <h6 class="fs-14 mb-2">{% trans 'phone' %}</h6>
-                            <p class="text-muted fs-14 mb-0">{{ office.phone }}</p>
-                        </div>
-                    </div>
-                </li>
-            {% endif %}
-            {% if office.mobile %}
-                <li>
-                    <div class="d-flex">
-                        <div class="ms-3">
-                            <h6 class="fs-14 mb-2">{% trans 'mobile' %}</h6>
-                            <p class="text-muted fs-14 mb-0">{{ office.mobile }}</p>
-                        </div>
-                    </div>
-                </li>
-            {% endif %}
-            {% if office.email %}
-                <li>
-                    <div class="d-flex">
-                        <div class="ms-3">
-                            <h6 class="fs-14 mb-2">{% trans 'email' %}</h6>
-                            <p class="text-muted fs-14 mb-0">{{ office.email }}</p>
+                        <div class="row ms-1">
+                            <div class="col-4"><h6 class="fs-14 mb-2">{% trans 'address' %}</h6></div>
+                            <div class="col-8"><p
+                                    class="text-muted fs-14 mb-0">{{ office.address }} {{ office.civic_number }} {{ office.municipality_province }} {{ office.country }}</p>
+                            </div>
                         </div>
                     </div>
                 </li>
@@ -80,21 +53,25 @@
                     </div>
                 </li>
             {% endif %}
-            {% if office.fax %}
-                <li>
-                    <div class="d-flex">
-                        <div class="ms-3">
-                            <h6 class="fs-14 mb-2">{% trans 'fax' %}</h6>
-                            <p class="text-muted fs-14 mb-0">{{ office.fax }}</p>
-                        </div>
-                    </div>
-                </li>
-            {% endif %}
-
         </ul>
-        <div class="mt-4">
-            <a href="#!" class="btn btn-soft-primary btn-hover w-100 rounded"><i class="mdi mdi-eye"></i>
-                {% trans 'View Office' %}</a>
+        <div class="row">
+            <div class="col-12 text-left">
+                {% if office.email %}
+                    <a href="mailto:{{ office.email }}">
+                        <i class="btn btn-outline-primary btn-rounded mdi font-size-20 mdi-email"
+                           data-bs-toggle="tooltip" data-bs-placement="top" title="Email"></i>
+                    </a>
+                {% endif %}
+                {% if office.mobile %}<a href="tel:{{ office.mobile }}">
+                    <i class="btn btn-outline-danger btn-rounded mdi font-size-20 mdi-card-account-phone-outline"
+                       data-bs-toggle="tooltip" data-bs-placement="top" title="Telefono Fisso"></i>
+                </a>{% endif %}
+                {% if office.phone %}<a href="tel:{{ office.phone }}">
+                    <i class="btn btn-outline-primary btn-rounded mdi font-size-20 mdi-cellphone-iphone"
+                       data-bs-toggle="tooltip" data-bs-placement="top" title="Mobile"></i>
+                </a>{% endif %}
+
+            </div>
         </div>
     </div>
 </div>

@@ -1,12 +1,12 @@
 from django.urls import path
 from . import views
 
-app_name = 'lia_project'
+app_name = 'lai_projects'
 urlpatterns = [
     path("", views.index, name="lia_project_index"),
-    path('list/', views.ProjectListView.as_view(), name='lia_project-list'),
-    path('list/<str:company>/', views.ProjectListView.as_view(), name='lia_project-list'),
-    path('details/<int:pk>/', views.CompanyDetailView.as_view(), name='lia_project-details'),
-    path('edit/<int:pk>/', views.CompanyUpdateView.as_view(), name='lia_projec-edit'),
-
+    path('grid/', views.ProjectListView.as_view(), name='lai_project-list'),
+    path('grid/<str:company>/', views.ProjectListView.as_view(), name='lai_projects-list'),
+    path('detail/<int:pk>/', views.ProjectDetailView.as_view(), name='lai_project-detail'),
+    path('edit/<int:pk>/', views.ProjectListView.as_view(), name='lai_project-edit'),
+    path('api/view_list/', views.projects_api, name='projects-api'),
 ]
