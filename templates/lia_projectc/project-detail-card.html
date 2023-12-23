@@ -4,8 +4,23 @@
     <div class="card-body border-bottom">
         <div class="d-flex">
             <img src="{% static 'images/companies/wechat.svg' %}" alt="" height="50">
+
             <div class="flex-grow-1 ms-3">
-                <h5 class="fw-semibold">{{ project.project_title }}</h5>
+                <h5 class="fw-semibold">{{ project.project_title }}
+                    <div class="dropdown float-end">
+                        <button class="btn  btn-outline-pink" type="button" id="button_offices"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bx bx-dots-vertical-rounded"></i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="project_edit_details">
+                            <li>
+                                <a class="dropdown-item"><i
+                                        class="mdi text-primary mdi-plus-one"></i> {% trans 'Edit' %} {% trans 'Details' %}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </h5>
                 <ul class="list-unstyled hstack gap-2 mb-0">
                     <li>
                         <span class="text-muted">{{ project.company }}</span>
@@ -29,11 +44,11 @@
             <div class="col-lg-6">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title mb-4">{{ group }}</h4></div>
+                        <h4 class="card-title text-center  text-pink">{{ group|upper }}</h4></div>
                     <div class="card-body">
                         <div class="row">
                             {% for custom_field in group_values %}
-                                <div class="col-7 border-bottom pb-2" ><strong>{{ custom_field.label }}
+                                <div class="col-7 border-bottom pb-2"><strong>{{ custom_field.label }}
                                     {% if custom_field.required_custom_value %}
                                         (required)
                                     {% endif %}
@@ -43,7 +58,6 @@
                                         {% for value in custom_field.value %}
                                             <li>
                                                 {{ value }}
-
                                             </li>
                                         {% endfor %}
                                     </ul>

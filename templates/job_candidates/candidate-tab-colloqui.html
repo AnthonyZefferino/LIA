@@ -1,0 +1,75 @@
+{% load i18n %}
+{% load function_render %}
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title mb-4">Interviews</h4>
+        <div data-simplebar style="max-height:576px;">
+            <ul class="verti-timeline list-unstyled">
+                {% for history in history_interview_candidate %}
+                    <li class="event-list active">
+                        <div class="event-timeline-dot">
+                            <i class="bx bx-right-arrow-circle font-size-18"></i>
+                        </div>
+                        <div class="d-flex">
+                            <div class="flex-shrink-0 me-3">
+{#                                <img src="{% static 'images/users/avatar-5.jpg' %}" alt=""#}
+{#                                     class="avatar-xs rounded-circle">#}
+                            </div>
+                            <div class="flex-grow-1">
+                                <div>
+                                    <b>{{ history.user }}</b>{{ history.interview_type }}<br>
+                                    {% if   history.company %}
+                                        <b> {% trans 'Company: ' %}</b>{{ history.company }}
+                                    {% endif %}
+                                    {% if   history.office %}
+                                        <b> {% trans 'Office: ' %}</b>{{ history.office }}
+                                    {% endif %}
+                                    {% if   history.vacancy %}
+                                        <br><b> {% trans 'Vacancy: ' %}</b>
+                                        {{ history.vacancy }}
+                                    {% endif %}
+                                    {% if   history.project %}
+                                        <br><b>{% trans 'Project: ' %}</b>
+                                        {{ history.project }}
+                                    {% endif %}
+                                    <p class="mb-0 text-muted">{{ history.interview_date }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <b>{% trans 'interview_type: ' %}</b></div>
+                                    <div class="col-4">{{ history.interview_type }}</div>
+                                    <div class="col-2">
+                                        <b>{% trans 'star_rating: ' %}</b></div>
+                                    <div class="col-4">{{ history.star_rating }}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-2">
+                                        <b>{% trans 'status_candidate: ' %}</b></div>
+                                    <div class="col-4">{{ history.status_candidate }}</div>
+                                    <div class="col-2">
+                                        <b>{% trans 'status_interview: ' %}</b></div>
+                                    <div class="col-4">{{ history.status_interview }}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-2">
+                                        <b>{% trans 'verbal_evaluation: ' %}</b></div>
+                                    <div class="col-4">{{ history.verbal_evaluation }}</div>
+                                    <div class="col-2"><b>{% trans 'notes: ' %}</b>
+                                    </div>
+                                    <div class="col-4">{{ history.notes }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="text-center mt-4"><a href="javascript: void(0);"
+                                             class="btn btn-primary waves-effect waves-light btn-sm">{% trans 'New ' %} {% trans 'interview' %}
+                <i class="mdi mdi-arrow-right ms-1"></i></a></div>
+        </div>
+    </div>
+</div><!--end card-->

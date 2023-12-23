@@ -70,5 +70,5 @@ class VacancyDetailView(DetailView):
                 delta = record.diff_against(record.prev_record)
             history.append((record, delta))
         context['history'] = history
-        pprint(context['history'])
+
         return context

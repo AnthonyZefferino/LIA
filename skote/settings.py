@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'utils',
     'vacancies',
     'lai_projects',
+    'tasks',
     #   App stroke
     'layout',
     'ecommerce',
@@ -63,7 +64,6 @@ INSTALLED_APPS = [
     'e_mail',
     'invoices',
     'projects',
-    'tasks',
     'contacts',
     'blog',
     'jobs',

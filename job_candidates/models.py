@@ -7,14 +7,45 @@ from utils.models import CustomField
 from django.core.exceptions import ValidationError
 from django.conf import settings
 from django.utils import timezone
+from simple_history.models import HistoricalRecords
+
+
+class EducationLevel(models.Model):
+    description = models.CharField(_("Description"), max_length=255)
+
+    def __str__(self):
+        return self.description
+
+    class Meta:
+        verbose_name = _("Education Level")
+        verbose_name_plural = _("Education Levels")
 
 
 class Candidate(models.Model):
     full_name = models.CharField(_("Full Name"), max_length=255)
     job_type = models.ForeignKey(JobType, on_delete=models.CASCADE, verbose_name=_("Job Type Preference Candidate"),
                                  null=True)
+    STATUS_CHOICES = [
+        ('unemployed', _('Unemployed')),
+        ('employed', _('Employed')),
+        ('awaiting_interview', _('Awaiting Interview')),
+        ('interviewed', _('Interviewed')),
+    ]
+    status = models.CharField(
+        _("Status Candidate"),
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default='disoccupato',
+    )
+
+    education_level = models.ForeignKey(EducationLevel, on_delete=models.CASCADE, null=True, blank=True,
+                                        verbose_name=_("Education Level"))
     qualification = models.ForeignKey(Qualification, on_delete=models.CASCADE)
-    study_title = models.CharField(_("Study Title"), max_length=255)
+    GENDER_CHOICES = [
+        ('male', _('male')),
+        ('female', _('female'))
+    ]
+    gender = models.CharField(_("Gender"), max_length=6, choices=GENDER_CHOICES, null=True, blank=True)
     birth_date = models.DateField(_("Birth Date"))
     birth_place = models.CharField(_("Birth Place"), max_length=255)
     address = models.CharField(_("Address"), max_length=255)
@@ -23,8 +54,8 @@ class Candidate(models.Model):
     municipality_province = models.ForeignKey(MunicipalityProvince, on_delete=models.CASCADE,
                                               verbose_name=_("Municipality Province"), default=7292)
     postal_code = models.CharField(_("Postal Code"), max_length=5, blank=True, null=True)
-    phone = models.CharField(_("Phone"), max_length=15)
-    mobile = models.CharField(_("Mobile"), max_length=15)
+    phone_number = models.CharField(_("Phone Number"), max_length=15, blank=True, null=True)
+    phone_mobile = models.CharField(_("Phone Mmobile"), max_length=15, blank=True, null=True)
     email = models.EmailField(_("Email"))
     whatsapp = models.BooleanField(_("WhatsApp"))
     facebook = models.CharField(_("Facebook"), max_length=255)
@@ -33,11 +64,21 @@ class Candidate(models.Model):
     license = models.BooleanField(_("Driver's License"))
     car_owned = models.BooleanField(_("Car Owned"))
     protected_category = models.ManyToManyField(ProtectedCategory, verbose_name=_("Protected Category"))
+    description = models.TextField(_("Description"), blank=True, null=True)
+    evaluation_lavoriamoci = models.TextField(_("Evaluation Lavoriamoci"), blank=True, null=True)
+    description_lia = models.TextField(_("Description LIA"), blank=True, null=True)
+    last_lia_analysis = models.JSONField(_("Last Lia analysis"), blank=True, null=True)
+    black_list = models.BooleanField(_("black_list"), null=True)
     created_at = models.DateTimeField(_("Created At"), default=timezone.now)
     updated_at = models.DateTimeField(_("Updated At"), auto_now=True)
+    history = HistoricalRecords()
 
     def __str__(self):
         return self.full_name
+
+    class Meta:
+        verbose_name = _("Candidate")
+        verbose_name_plural = _("Candidates")
 
 
 class InterviewType(models.Model):
@@ -185,6 +226,8 @@ class CandidateProjectVacancyPlacement(models.Model):
         related_name='company_project_vacancy_placement',
         limit_choices_to={'industry__id': 2}
     )
+    office = models.ForeignKey(Office, related_name='placement_office', verbose_name=_("office"),
+                               on_delete=models.CASCADE, null=True, blank=True)
     vacancy = models.ForeignKey(Vacancy, related_name='placement_vacanciy', verbose_name=_("Vacancy"),
                                 on_delete=models.CASCADE, null=True, blank=True)
     project = models.ForeignKey(Project, related_name='placement_project', verbose_name=_("Project"),
@@ -196,13 +239,13 @@ class CandidateProjectVacancyPlacement(models.Model):
         default='open'
     )
     job_type = models.ForeignKey(JobType, on_delete=models.CASCADE, verbose_name=_("Job Type Placement"), null=True)
-    black_list = models.BooleanField(_("black_list"), null=True)
     candidate = models.ForeignKey(
         Candidate,
         on_delete=models.CASCADE,
         verbose_name=_("Candidate Inserted"),
         related_name='candidate_project_placements'
     )
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name=_("User"), null=True)
     note = models.TextField(_("note"), blank=True)
     start_date = models.DateField(_("Start Date"))
     end_date = models.DateField(_("End Date"))

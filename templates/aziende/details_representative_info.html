@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load function_render %}
 <div class="card-body">
     <div class="table-responsive">
         <table class="table">
@@ -101,6 +102,11 @@
                     <i class="btn btn-outline-danger btn-rounded mdi font-size-20 mdi-card-account-phone-outline"
                        data-bs-toggle="tooltip" data-bs-placement="top" title="Phone"></i>
                 </a>{% endif %}
+                {% if representative.phone_mobile %}
+                    <a href="data:text/vcard;charset=utf-8,BEGIN:VCARD%0AVERSION:3.0%0AN:{{ representative.full_name|trim|upper|replace:" ,;" }};;%0ATEL;TYPE=CELL:+39-{{ representative.phone_mobile }}%0AEMAIL:{{ representative.email }}%0AEND:VCARD">
+                        <button class="btn btn-rounded mdi btn-outline-secondary">{% trans 'Add Contact' %}</button>
+                    </a>
+                {% endif %}
             </div>
             <div class="col-2">
                 <div class="dropdown float-end">

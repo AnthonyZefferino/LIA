@@ -86,3 +86,4 @@ class VacancyCustomFieldValue(models.Model):
         unique_together = ['vacancy', 'custom_field']
         verbose_name = _("Requisito Vacancy valore")
         verbose_name_plural = _("Requisiti Vacancy valori")
+
